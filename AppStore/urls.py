@@ -21,15 +21,12 @@ import app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', app.views.store, name='store'),
-    path('view/<str:id>', app.views.cart, name='cart'),
-    path('edit/<str:id>', app.views.checkout, name='checkout'),
-]
-
-urlpatterns = [
-        #Leave as empty string for base url
-	path('', views.store, name="store"),
-	path('cart/', views.cart, name="cart"),
-	path('checkout/', views.checkout, name="checkout"),
-
+    path('', app.views.index_products, name='products'),
+    ##path('', app.views.index, name='index'),
+    path('add/', app.views.add, name='add'),
+    ##path('buy/', app.views.buy, name='buy'),
+    path('view/<str:id>', app.views.view, name='view'),
+    path('edit/<str:id>', app.views.edit, name='edit'),
+    path('login/', app.views.login, name='login'),
+    path('purchase/<int:productid>', app.views.purchase, name='purchase'),
 ]
