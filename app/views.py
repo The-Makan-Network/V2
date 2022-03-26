@@ -57,7 +57,7 @@ def add(request):
 
     context['status'] = status
  
-    return render(request, "app/new_user.html", context)
+    return render(request, "app/register.html", context)
 
 # Create your views here.
 def edit(request, id):
