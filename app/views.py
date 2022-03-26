@@ -30,10 +30,10 @@ def view(request, id):
         customer = cursor.fetchone()
     result_dict = {'cust': customer}
 
-    return render(request, 'app/view_admin.html', result_dict)
+    return render(request, 'app/view.html', result_dict)
 
 # Create your views here.
-def add(request):
+def register(request):
     """Shows the main page"""
     context = {}
     status = ''
@@ -144,9 +144,9 @@ def profile(request, productid):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid =  %s",[productid])
-        products = cursor.fetchone()
+        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[userid])
+        user = cursor.fetchone()
 
-    result_dict = {'products': products}
+    result_dict = {'user': user}
 
     return render(request, 'app/profile.html', result_dict)
