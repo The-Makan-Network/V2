@@ -137,4 +137,4 @@ def purchase(request, productid):
 
     result_dict = {'products': products}
 
-    return render(request, 'app/purchase.html', result_dict)
+    return render(request, 'app/view.html', result_dict)
