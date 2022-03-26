@@ -125,7 +125,7 @@ def index_products(request):
 
     result_dict = {'products': products}
 
-    return render(request, 'app/index_products.html', result_dict)
+    return render(request, 'app/home.html', result_dict)
 
 def purchase(request, productid):
     """Shows the main page"""
