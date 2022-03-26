@@ -138,3 +138,15 @@ def purchase(request, productid):
     result_dict = {'products': products}
 
     return render(request, 'app/view.html', result_dict)
+
+def profile(request, productid):
+    """Shows the main page"""
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM products WHERE productid =  %s",[productid])
+        products = cursor.fetchone()
+
+    result_dict = {'products': products}
+
+    return render(request, 'app/profile.html', result_dict)
