@@ -33,10 +33,6 @@ foreign key(s_id, p_id) references products(sellerid, productid),
 check(not b_id = s_id)
 );
 
-CREATE TABLE IF NOT EXISTS product_ratings (
-b_id references transactions
-);
-
 
 CREATE TABLE IF NOT EXISTS buyers (
 b_id varchar(16) primary key
