@@ -25,6 +25,6 @@ urlpatterns = [
     path('register/', app.views.register, name='register'),
     ##path('buy/', app.views.buy, name='buy'),
     path('view/<int:id>', app.views.view, name='view'),
-    path('profile/<int:id>', app.views.profile, name='profile')
+    path('profile/<int:id>', app.views.profile, name='profile'),
     path('login/', app.views.login, name='login')
 ]
