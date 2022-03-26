@@ -21,10 +21,11 @@ import app.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', app.views.index_products, name='home'),
+    path('', app.views.home, name='home'),
     path('register/', app.views.register, name='register'),
-    ##path('buy/', app.views.buy, name='buy'),
-    path('view/<int:id>', app.views.view, name='view'),
     path('profile/<int:id>', app.views.profile, name='profile'),
-    path('login/', app.views.login, name='login')
+    path('login/', app.views.login, name='login'),
+    path('view/<int:productid>', app.views.view, name='view')
 ]
+
+
