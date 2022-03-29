@@ -49,7 +49,7 @@ def register(request):
             if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
-                        , [request.POST['userid'], request.POST['phoneno'], request.POST['password'] ])
+                        , [request.POST['userid'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, "Registration successful.")
