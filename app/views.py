@@ -88,7 +88,7 @@ def profile(request, id):
     return render(request, 'app/profile.html', result_dict)
 
 
-def view(request, id):
+def viewproduct(request, id):
     """Shows the main page"""
 
     ## Use raw query to get all objects
