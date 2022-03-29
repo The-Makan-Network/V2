@@ -43,7 +43,7 @@ def register(request):
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
+            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['username']])
             user = cursor.fetchone()
             ## No customer with same id
             if user == None:
@@ -55,7 +55,7 @@ def register(request):
                 messages.success(request, "Registration successful.")
                 return redirect('home')    
             else:
-                status = 'User with ID %s already exists' % (request.POST['userid'])
+                status = 'User with ID %s already exists' % (request.POST['username'])
 
     form = NewUserForm()
     context['status'] = status
