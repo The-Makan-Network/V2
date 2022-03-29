@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.db import connection
-
+from django.contrib.auth import login
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -29,6 +30,7 @@ def view(request, id):
 
     return render(request, 'app/view_admin.html', result_dict)
 
+
 # Create your views here.
 def register(request):
     """Shows the main page"""
@@ -40,16 +42,18 @@ def register(request):
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
-            customer = cursor.fetchone()
+            user = cursor.fetchone()
             ## No customer with same id
-            if customer == None:
+            if user == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO customers VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute("INSERT INTO customers(userid, phoneno, password) VALUES (%s, %s, %s)"
                         , [request.POST['userid'], request.POST['phoneno'], request.POST['password'] ])
+                newuser = form.save()
+                login(request, newuser)
+                messages.success(request, "Registration successful.")
                 return redirect('home')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['userid'])
-
 
     context['status'] = status
  
