@@ -38,6 +38,7 @@ def register(request):
     status = ''
 
     if request.POST:
+        form = NewUserForm(request.POST)
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
@@ -55,6 +56,7 @@ def register(request):
             else:
                 status = 'User with ID %s already exists' % (request.POST['userid'])
 
+    form = NewUserForm()
     context['status'] = status
  
     return render(request, "app/register.html", context)
