@@ -63,7 +63,7 @@ def register(request):
     return render(request, "app/register.html", context)
 
 # Create your views here.
-def login(request):
+def signin(request):
     """Shows the login page"""
     context = {}
     status = ''
