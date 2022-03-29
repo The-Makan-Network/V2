@@ -97,12 +97,12 @@ def profile(request, id):
     return render(request, 'app/profile.html', result_dict)
 
 
-def view(request, productid):
+def view(request, id):
     """Shows the main page"""
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid =  %s",[productid])
+        cursor.execute("SELECT * FROM products WHERE productid =  %s",[id])
         products = cursor.fetchone()
 
     result_dict = {'products': products}
