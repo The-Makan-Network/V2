@@ -50,13 +50,13 @@ def register(request):
  
     return render(request, "app/register.html", context)
 
-# Create your views here.
 def signin(request):
     """Shows the login page"""
     context = {}
     status = ''
+
     if request.POST:
-	form = AuthenticationForm(request, data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
 	if form.is_valid():
 		username = form.cleaned_data.get('username')
 		password = form.cleaned_data.get('password1')
@@ -72,14 +72,9 @@ def signin(request):
     form = AuthenticationForm()
     context['status'] = status
     return render(request, 'app/login.html', context)
-
-	        ## Check if userid is already in the table
-        ##with connection.cursor() as cursor:
-
-            ##cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
-            ##user = cursor.fetchone()
-            ## No customer with same id
-
+		
+		
+		
 def profile(request, id):
     """Shows the main page"""
 
