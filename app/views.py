@@ -20,19 +20,6 @@ def home(request):
 
 
 # Create your views here.
-def view(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM allusers WHERE userid = %s", [id])
-        user = cursor.fetchone()
-    result_dict = {'use': user}
-
-    return render(request, 'app/view_admin.html', result_dict)
-
-
-# Create your views here.
 def register(request):
     """Shows the main page"""
     context = {}
