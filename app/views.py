@@ -59,10 +59,10 @@ def signin(request):
     if request.POST:
         form = AuthenticationForm(request, data=request.POST)
         ## Check if userid is already in the table
-        with connection.cursor() as cursor:
+        ##with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
-            user = cursor.fetchone()
+            ##cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
+            ##user = cursor.fetchone()
             ## No customer with same id
             if form.is_valid():
 			    username = form.cleaned_data.get('username')
