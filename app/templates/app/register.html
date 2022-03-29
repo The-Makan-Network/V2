@@ -11,16 +11,13 @@
   {% csrf_token %}
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="userid"><b>UserID</b></label>
+    <input type="text" placeholder="Enter UserID" name="userid" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="phoneno"><b>Phone Number</b></label>
+    <input type="tel" placeholder="Enter Phone Number" name="phoneno" required>
         
     <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
