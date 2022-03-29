@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.db import connection
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 from .forms import NewUserForm
 
 # Create your views here.
@@ -56,19 +57,27 @@ def signin(request):
     status = ''
 
     if request.POST:
+        form = AuthenticationForm(request, data=request.POST)
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
             user = cursor.fetchone()
             ## No customer with same id
-            if user == None:
-                cursor.execute("INSERT INTO allusers VALUES (%s, %s)"
-                        , [request.POST['userid'], request.POST['password']])
-                return redirect('/')
+            if form.is_valid():
+			    username = form.cleaned_data.get('username')
+			    password = form.cleaned_data.get('password1')
+			    user = authenticate(username=username, password1=password1)
+                if user is not None:
+				    login(request, user)
+				    messages.info(request, f"You are now logged in as {username}.")
+				    return redirect("/")
+			    else:
+				    messages.error(request,"Invalid username or password.")
             else:
-                status = 'Your User Id and Password is incorrect' % (request.POST['userid'])
-
+                status = 'Invalid username or password.' 
+    form = AuthenticationForm()
+    context['status'] = status
     return render(request, 'app/login.html', context)
 
 def profile(request, id):
