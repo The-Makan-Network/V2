@@ -78,7 +78,7 @@ def signin(request):
             if user == None:
                 cursor.execute("INSERT INTO allusers VALUES (%s, %s)"
                         , [request.POST['userid'], request.POST['password']])
-                return redirect('home')
+                return redirect('/')
             else:
                 status = 'Your User Id and Password is incorrect' % (request.POST['userid'])
 
