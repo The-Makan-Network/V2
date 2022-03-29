@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your forms here.
 
 class NewUserForm(UserCreationForm):
-	number = forms.IntegerField(required=True)
+	phoneno = forms.IntegerField(required=True)
 
 	class Meta:
 		model = User
