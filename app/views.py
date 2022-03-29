@@ -40,7 +40,7 @@ def register(request):
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, "Registration successful.")
+                messages.success(request, 'Registration successful.')
                 return redirect('home/')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['username'])
@@ -63,10 +63,10 @@ def signin(request):
             user = authenticate(username=username, password1=password1)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
+                messages.info(request, f'You are now logged in as {username}.')
                 return redirect("/")
             else:
-                messages.error(request,"Invalid username or password.")
+                messages.error(request,'Invalid username or password.')
         else:
             status = 'Invalid username or password.' 
     form = AuthenticationForm()
