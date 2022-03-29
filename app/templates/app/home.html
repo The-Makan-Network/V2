@@ -23,6 +23,10 @@
 
             <td>
                 <a href="view/{{product.0}}"><button>More Details</button></a>
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{product.0}}"/>
+                </form>
             </td>
         <tr>
         {% endfor %}
