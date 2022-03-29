@@ -53,7 +53,7 @@ def register(request):
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, "Registration successful.")
-                return redirect('')    
+                return redirect('home/')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['username'])
 
