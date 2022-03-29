@@ -24,9 +24,9 @@ def view(request, id):
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customers WHERE customerid = %s", [id])
-        customer = cursor.fetchone()
-    result_dict = {'cust': customer}
+        cursor.execute("SELECT * FROM allusers WHERE userid = %s", [id])
+        user = cursor.fetchone()
+    result_dict = {'use': user}
 
     return render(request, 'app/view_admin.html', result_dict)
 
@@ -38,7 +38,7 @@ def register(request):
     status = ''
 
     if request.POST:
-        ## Check if customerid is already in the table
+        ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
@@ -46,7 +46,7 @@ def register(request):
             ## No customer with same id
             if user == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO customers(userid, phoneno, password) VALUES (%s, %s, %s)"
+                cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
                         , [request.POST['userid'], request.POST['phoneno'], request.POST['password'] ])
                 newuser = form.save()
                 login(request, newuser)
@@ -66,7 +66,7 @@ def login(request):
     status = ''
 
     if request.POST:
-        ## Check if customerid is already in the table
+        ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['userid']])
