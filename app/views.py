@@ -56,19 +56,19 @@ def signin(request):
     status = ''
 
     if request.POST:
-	username = request.POST['username']
-	password = request.POST['password1']
-	
+        username = request.POST['username']
+        password = request.POST['password1']
+        
 	authenticate(username=username, password1=password1)
 	
 	if user is not None:
-		login(request, user)
-		return redirect({% url %})
+            login(request, user)
+            return redirect({% url %})
 	else:
-		messages.info(request, 'invalid credentials')
-                messages.error(request,'Invalid username or password.')
-    else:
-	return render(request, 'app.home.html', context)
+            messages.info(request, 'invalid credentials')
+            messages.error(request,'Invalid username or password.')
+
+    return render(request, 'app/home.html', context)
 			
 		
 def profile(request, id):
