@@ -23,8 +23,7 @@
             <td> {{ product.5 }} </td>
 
             <td>
-                <a href="view/{{product.0}}"><button>View More</button></a> | 
-                | 
+                <a href="view/{{product.0}}"><button>View More</button></a>
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{product.0}}"/>
