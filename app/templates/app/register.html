@@ -31,6 +31,11 @@
     <span class="text"><a href={% url 'login' %}>Already have an account?</a></span>
   </div>
 </form>
+  <div>
+    {% for message in messages %}
+    <h3>{{message}}</h3>
+    {% endfor %}
+  </div>
 
 </body>
 </html>
