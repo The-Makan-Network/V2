@@ -6,18 +6,6 @@
     <a href="register">Register</a>
     <a href="login">Login</a>
     <br/><br/>
-    {% for product in products %}    
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ product.0 }}</h5>
-            <p class="card-text">{{ product.3 }}</p>
-            <p class="card-text">Price - {{ product.4 }}</p>
-            <a href="purchase/" class="btn btn-primary">Buy Now</a>
-        </div>
-    </div>
-    {% endfor %}
-        
-        
     <table border=1>    
         <thead>
             <th>Product ID</th>
