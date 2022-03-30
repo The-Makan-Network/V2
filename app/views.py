@@ -58,8 +58,7 @@ def signin(request):
     if request.POST:
         username = request.POST['username']
         password = request.POST['password1']
-        
-	authenticate(username=username, password1=password1)
+        authenticate(username=username, password1=password1)
 	
 	if user is not None:
             login(request, user)
