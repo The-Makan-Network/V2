@@ -1,5 +1,6 @@
 <html>
 <body>
+    {% for product in products %}
     <h2>Details about {{product.2}} sold by {{product.1}}</h2>
     <a href="/">Back to home</a>
     <br/><br/>
@@ -35,5 +36,6 @@
             <td> {{product.7}} </td>
         </tr>
     </table>
+    {% endfor %}
 </body>
 </html>
