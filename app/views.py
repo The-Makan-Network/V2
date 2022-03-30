@@ -48,7 +48,7 @@ def register(request):
     form = NewUserForm()
     context['status'] = status
  
-    return render(request, "app/home.html", context)
+    return render(request, "app/register.html", context)
 
 def signin(request):
     """Shows the login page"""
