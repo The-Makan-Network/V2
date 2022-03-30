@@ -41,7 +41,7 @@ def register(request):
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, 'Registration successful.')
-                return redirect('/')    
+                return redirect('app/')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['username'])
 
@@ -64,7 +64,7 @@ def signin(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f'You are now logged in as {username}.')
-                return redirect({% url '' %})
+                return redirect('app/')
             else:
                 messages.error(request,'Invalid username or password.')
         else:
