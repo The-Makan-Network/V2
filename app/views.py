@@ -62,7 +62,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             return redirect("app/home.html")
-	else:
+        else:
             messages.info(request, 'invalid credentials')
             messages.error(request,'Invalid username or password.')
     return render(request, 'app/home.html', context)
