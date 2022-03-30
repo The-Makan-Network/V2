@@ -48,7 +48,7 @@ def register(request):
     form = NewUserForm()
     context['status'] = status
  
-    return render(request, "app/register.html", context)
+    return render(request, "app/home.html", context)
 
 def signin(request):
     """Shows the login page"""
@@ -59,14 +59,12 @@ def signin(request):
         username = request.POST['username']
         password = request.POST['password1']
         authenticate(username=username, password1=password1)
-	
 	if user is not None:
             login(request, user)
-            return redirect({% url %})
+            return redirect("app/home.html")
 	else:
             messages.info(request, 'invalid credentials')
             messages.error(request,'Invalid username or password.')
-
     return render(request, 'app/home.html', context)
 			
 		
