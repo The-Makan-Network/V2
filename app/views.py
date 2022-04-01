@@ -79,10 +79,10 @@ def profile(request, id):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
+        cursor.execute("SELECT * FROM products WHERE sellerid =  %s",[id])
         user = cursor.fetchone()
 
-    result_dict = {'users': users}
+    result_dict = {'product': user}
 
     return render(request, 'app/profile.html', result_dict)
 
