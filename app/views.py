@@ -57,7 +57,7 @@ def signin(request):
             return redirect('home')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
-            return redirect('login')	
+            return redirect('profile')	
 
 
     else:
