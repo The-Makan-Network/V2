@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Transactions</title>
+</head>
+<body>
+    <h2> The Makan Network </h2>
+    <br/>
+    {% include 'app/header.html' %}
+    <br/>
+    <a href="admin_products">Products</a>
+    <a href="admin_users">Transactions</a>
+    <br/><br/>
+    <table border=1>
+        <thead>
+            <th>Order id</th>
+            <th>Buyer id</th>
+            <th>Seller id</th>
+            <th>Product id</th>
+            <th>Quantity</th>
+            <th>delivery</th>
+            <th>status</th>
+        </thead>
+        {% for transactions in transactions %}
+        <tr>
+            <td> {{ transactions.0 }} </td>
+            <td> {{ transactions.1 }} </td>
+            <td> {{ transactions.2 }} </td>
+            <td> {{ transactions.3 }} </td>
+            <td> {{ transactions.4 }} </td>
+            <td> {{ transactions.5 }} </td>
+            <td> {{ transactions.6 }} </td>
+            <td>
+                <a href="admin_transaction_edit/{{transactions.0}}"><button>Edit</button></a>
+                |
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{cust.2}}"/>
+                <button onclick="return confirm('Are you sure you want to delete {{transactions.0}}?');" type="submit" name="action" value="delete">Delete</button>
+              </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
