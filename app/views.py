@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db import connection
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import NewUserForm
@@ -55,7 +55,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Welcome, You logged in to {user.username}')
-            return HttpResponseRedirect('profile')
+            return redirect('profile')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
             return redirect('login')	
