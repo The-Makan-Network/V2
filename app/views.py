@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import NewUserForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def home(request):
@@ -54,7 +55,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Welcome, You logged in to {user.username}')
-            return redirect('home')
+            return HttpResponseRedirect('profile')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
             return redirect('login')	
@@ -91,6 +92,11 @@ def view(request, id):
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
         customer = cursor.fetchone()
     result_dict = {'cust': customer}
+
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT qty FROM transactions WHERE productid = %s", [id])
+        status = cursor.fetchall
+    result_dict = {'status': status}
 
     return render(request,'app/view.html',result_dict)
 
