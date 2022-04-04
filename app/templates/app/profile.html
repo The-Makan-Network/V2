@@ -1,1 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <h1>User Profile</h1>
+</head>
+<body>
 
+    <h2>Chong Wan Fei</h2>
+    <p class="title">Top 10% Baker of 2022</p>
+    <p>5 star rating</p>
+  
+    
+    <h3>Food You Sold</h3>
+    <br/><br/>
+    <table border=1> 
+        <thead>
+            <th>Product ID</th>
+            <th>Name</th>
+        </thead>
+        {% for product in products %}
+        <tr>
+            <td> {{ product.0 }} </td>
+            <td> {{ product.2 }} </td>
+          
+            <td>
+        <tr>
+        { % endfor %}
+    </table>
+          
+    <div class="container" style="background-color:#f1f1f1">
+        <span class="text"><a href="/">Back to Home</a></span>
+    </div>
+</body>
+</html>
+          
+    
+ 
