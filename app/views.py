@@ -94,7 +94,7 @@ def view(request, id):
     result_dict = {'cust': customer}
 
     with connection.cursor() as cursor:
-        cursor.execute("SELECT qty FROM transactions WHERE productid = %s", [id])
+        cursor.execute("SELECT qty FROM transactions WHERE p_id = %s", [id])
         status = cursor.fetchall
     result_dict = {'status': status}
 
