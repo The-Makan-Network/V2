@@ -22,56 +22,53 @@ def home(request):
 
 # Create your views here.
 def register(request):
-    """Shows the main page"""
-    context = {}
-    status = ''
 
     if request.POST:
         form = NewUserForm(request.POST)
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
-
             cursor.execute("SELECT * FROM allusers WHERE userid = %s", [request.POST['username']])
             user = cursor.fetchone()
             ## No customer with same id
-            if user == None:
+            if not form.is_valid():
+                messages.success(request, ("Password does not pass requirements. Please try again."))
+                return redirect('register')
+            elif user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
                         , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, 'Registration successful.')
-                return redirect('/')    
+                messages.success(request, ("Registration successful. Welcome, {username}!"))
+                return redirect('login')
             else:
-                status = 'User with ID %s already exists' % (request.POST['username'])
-
+                messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
+                return redirect('register')
+		
     form = NewUserForm()
-    context['status'] = status
- 
-    return render(request, "app/register.html", context)
+    return render(request, "app/register.html", {})
 
 def signin(request):
-    """Shows the login page"""
-    context = {}
-    status = ''
-
-    if request.POST:
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password1=password1)
-            if user is not None:
-                login(request, user)
-                messages.info(request, f'You are now logged in as {username}.')
-                return redirect('app/')
-            else:
-                messages.error(request,'Invalid username or password.')
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password1']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, f'Welcome, You logged in to {user.username}')
+            return redirect('home')
         else:
-            status = 'Invalid username or password.' 
-    form = AuthenticationForm()
-    context['status'] = status
-    return render(request, 'app/login.html', context)
+            messages.success(request, ("There Was An Error Logging In, Try Again."))	
+            return redirect('login')	
+
+
+    else:
+        return render(request, 'app/login.html', {})
+
+def signout(request):
+	logout(request)
+	messages.success(request, ("You Were Logged Out!"))
+	return redirect('home')
 			
 		
 def profile(request, id):
