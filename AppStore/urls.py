@@ -28,8 +28,8 @@ urlpatterns = [
     path('logout/', app.views.signout, name='logout'),
     path('view/<int:id>', app.views.view, name='view'),
     path('view/purchase', app.views.purchase_success, name='purchase'),
-    path('searchproduct/', app.views.search_product, name='searchproduct'),
-    path('searchuser/', app.views.search_user, name='searchuser')
+    path('searchproduct/', app.views.product_search, name='searchproduct'),
+    path('searchuser/', app.views.user_search, name='searchuser')
     
 ]
 
