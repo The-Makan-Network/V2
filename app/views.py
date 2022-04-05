@@ -111,7 +111,7 @@ def user_purchase(request):
 			    #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
 	return render(request, 'app/purchase.html')
 			
-def purchase_success(request):
+def purchase_more(request):
 	if request.POST['action'] == "backhome":
 		return redirect('home')
 	
