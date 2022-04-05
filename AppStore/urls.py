@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/', app.views.signout, name='logout'),
     path('view/<int:id>', app.views.view, name='view'),
     path('view/purchase', app.views.user_purchase, name='purchase'),
+    path('view/home', app.views.purchase_success, name='purchasesuccess')
     #path('searchproduct/', app.views.product_search, name='searchproduct'),
     #path('searchuser/', app.views.user_search, name='searchuser')
     
