@@ -39,7 +39,7 @@ def register(request):
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
-                return redirect('home')
+                return redirect('login')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
                 return redirect('register')
@@ -47,7 +47,7 @@ def register(request):
     form = NewUserForm()
     return render(request, "app/register.html", {})
 
-def signin(request):
+def signin(request, id):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password1']
@@ -55,7 +55,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Welcome, You logged in to {user.username}')
-            return redirect('profile')
+            return redirect('home')
         else:
             messages.success(request, ("There Was An Error Logging In, Try Again."))	
             return redirect('login')	
