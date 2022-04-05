@@ -101,14 +101,14 @@ def view(request, id):
     return render(request,'app/view.html',result_dict)
 
 def user_purchase(request):
-	context = {}
-	status = ''
+	#context = {}
+	#status = ''
 	#phoneno = request.phoneno
-	if request.POST['action'] == "purchase":
-	  with connection.cursor() as cursor:
-	    cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-			   , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"], 
-			      request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
+	#if request.POST['action'] == "purchase":
+	  #with connection.cursor() as cursor:
+	    #cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+			   #, [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"], 
+			    #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
 	return render(request, 'app/purchase.html')
 			
 def purchase_success(request):
