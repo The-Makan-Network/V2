@@ -93,6 +93,14 @@ label {
           <div class="fa fa-search"></div>
           <input type="text" placeholder="Search" />
           <div class="fa fa-times"></div>
+          <script>
+  	        function openPage() {
+    	        var x = document.getElementById("search").value;
+      
+              if (x=== "Ang Ku Kueh"){
+      	        window.open("/view.html");
+              } 
+          </script>
         <div class="container">
           {% if messages %}
             {% for message in messages %}
