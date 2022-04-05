@@ -58,7 +58,7 @@ h2, h3 {
   color: Grey;
 }
 
-.viewbutton, .minorder, .description {
+.viewbutton, .minorder, .description, .search {
   float: left;
   clear: left;
   width: 100%;
@@ -85,22 +85,29 @@ label {
 .text-box button {
   margin-top: 1em;
 }
+  
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e26d5c;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;
+}
 
 </style>
     <body>
         {% include 'app/header.html' %}
+        <div class="search">
+          <a href="searchproduct" button class="btn btn-outline-dark" type="button">Search Products</a>
+        </div>
         <div class="input-wrapper">
           <div class="fa fa-search"></div>
           <input type="text" placeholder="Search" />
           <div class="fa fa-times"></div>
-          <script>
-  	        function openPage() {
-    	        var x = document.getElementById("search").value;
-      
-              if (x=== "Ang Ku Kueh"){
-      	        window.open("/view.html");
-              } 
-          </script>
+        </div> 
         <div class="container">
           {% if messages %}
             {% for message in messages %}
