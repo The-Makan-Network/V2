@@ -93,7 +93,7 @@ def view(request, id):
         customer = cursor.fetchone()
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
         transaction = cursor.fetchall
-        customer.append(transaction)
+        customer.insert(8, transaction)
     result_dict = {'cust': customer}
 
 
