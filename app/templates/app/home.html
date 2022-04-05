@@ -39,7 +39,17 @@
   padding: 1em;
 }
 
-h2, h3 {
+h2 {
+  float: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 5em;
+  text-transform: uppercase;
+  margin: 0.2em auto;
+}
+  
+  
+h3 {
   float: left;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -121,7 +131,7 @@ label {
           {% block content %}
           {% endblock %}
         </div>
-        <h2>Product Listing</h2>
+        <h2>Product Listing</h2><br>
         <a href="register">Register</a>
         <a href="login">Login</a>
         <br/><br/>
