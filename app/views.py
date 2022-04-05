@@ -103,6 +103,15 @@ def view(request, id):
 def purchase_success(request):
 	return render(request, 'app/purchase.html')
 
+#def product_search(request): 
+	#context = {}
+	#status = ''
+	#if request.POST:
+	    #if request.POST['action'] == 'search':
+		#with connection.cursor() as cursor:
+		    #word = "%" + request.POST['search'].lower() 
+			
+
 def admin_users(request):
     """Show list of allusers with buttons to edit/delete"""
 
