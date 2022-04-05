@@ -29,6 +29,7 @@ urlpatterns = [
     path('view/<int:id>', app.views.view, name='view'),
     path('view/purchase', app.views.user_purchase, name='purchase'),
     path('view/home', app.views.purchase_more, name='purchasemore')
+    #path('sell/', app.views.sell, name="sell")
     #path('searchproduct/', app.views.product_search, name='searchproduct'),
     #path('searchuser/', app.views.user_search, name='searchuser')
     
