@@ -92,10 +92,8 @@ def view(request, id):
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
         customer = cursor.fetchone()
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-        transaction = cursor.fetchall
-        customer = customer + (transaction,)
+        customer = customer + (cursor.fetchall,)
     result_dict = {'cust': customer}
-
 
     ##use raw query to get the current orders
     #with connection.cursor() as cursor:
