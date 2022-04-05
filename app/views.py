@@ -100,6 +100,9 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
+def purchase_success(request):
+	return render(request, 'app/purchase.html')
+
 def admin_users(request):
     """Show list of allusers with buttons to edit/delete"""
 
