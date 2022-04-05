@@ -100,7 +100,7 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
-def user_purchase(request, id):
+def user_purchase(request):
 	context = {}
 	status = ''
 	#phoneno = request.phoneno
