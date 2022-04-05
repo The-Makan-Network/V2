@@ -100,18 +100,21 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
-def purchase_success(request):
+def user_purchase(request, id):
+	context = {}
+	status = ''
+	#phoneno = request.phoneno
+	if request.POST['action'] == "purchase":
+	  with connection.cursor() as cursor:
+	    cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+			   , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"], 
+			      request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
 	return render(request, 'app/purchase.html')
-
-#def product_search(request): 
-	#context = {}
-	#status = ''
-	#if request.POST:
-	    #if request.POST['action'] == 'search':
-		#with connection.cursor() as cursor:
-		    #word = "%" + request.POST['search'].lower() 
 			
-
+def purchase_success(request):
+	if request.POST['action'] == "backhome":
+		return redirect('home')
+	
 def admin_users(request):
     """Show list of allusers with buttons to edit/delete"""
 
