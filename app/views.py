@@ -147,7 +147,7 @@ def search_users(request):
     return render(request, 'app/search_users.html', result_dict)
 
 
-def user_purchase(request, id):
+def user_purchase(request):
     # context = {}
     # status = ''
     # phoneno = request.phoneno
@@ -157,7 +157,7 @@ def user_purchase(request, id):
     # , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"],
     #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
     with connection.cursor() as cursor:
-        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [request.post['productid']])
         transactions = cursor.fetchall
         result_dict = {'transactions': transactions}
     return render(request, 'app/purchase.html', result_dict)
