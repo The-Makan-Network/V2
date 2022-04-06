@@ -164,6 +164,8 @@ def user_purchase(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
         transactions = cursor.fetchall()
+        if transactions is None:
+            transactions = 0
     result_dict = {'transactions': transactions}
     return render(request, 'app/purchase.html', result_dict)
 
@@ -210,8 +212,8 @@ def admin_users_edit(request, id):
     if request.POST:
         with connection.cursor() as cursor:
             cursor.execute(
-                "UPDATE allusers SET user_id = %s, password = %s, email = %s, country = %s WHERE phoneno = %s"
-                , [request.POST['user id'], request.POST['password'], request.POST['phoneno'], id])
+                "UPDATE allusers SET user_id = %s, password = %s, phoneno = %s WHERE phoneno = %s"
+                , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
             status = 'Customer edited successfully!'
             cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [id])
             obj = cursor.fetchone()
