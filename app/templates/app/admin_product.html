@@ -8,7 +8,7 @@
     {% include 'app/header.html' %}
     <br/>
     <a href={% url 'admin user' %}>Users</a>
-    <a href="admin_transaction">Transactions</a>
+    <a href={% url 'admin_transactions' %}>Transactions</a>
     <br/><br/>
     <table border=1>
         <thead>
@@ -32,7 +32,7 @@
             <td> {{ products.6 }} </td>
             <td> {{ products.7 }} </td>
             <td>
-                <a href="admin_user_edit/{{products.0}}"><button>Edit</button></a>
+                <a href="admin_product_edit/{{products.0}}"><button>Edit</button></a>
                 |
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}

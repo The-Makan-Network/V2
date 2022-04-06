@@ -5,11 +5,9 @@
     <title>Admin Transactions</title>
 </head>
 <body>
-    <h2> The Makan Network </h2>
-    <br/>
     {% include 'app/header.html' %}
     <br/>
-    <a href="admin_products">Products</a>
+    <a href={% url 'admin_product' %}>Products</a>
     <a href={% url 'admin user' %}>User</a>
     <br/><br/>
     <table border=1>
@@ -36,7 +34,7 @@
                 |
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
-                <input type="hidden" name="id" value="{{cust.2}}"/>
+                <input type="hidden" name="id" value="{{transactionsd.0}}"/>
                 <button onclick="return confirm('Are you sure you want to delete {{transactions.0}}?');" type="submit" name="action" value="delete">Delete</button>
               </form></td>
         </tr>
