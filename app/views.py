@@ -268,7 +268,7 @@ def admin_product_edit(request, id):
     context["obj"] = obj
     context["status"] = status
 
-    return render(request, "app/admin_products_edit.html", context)
+    return render(request, "app/admin_product_edit.html", context)
 
 def admin_transactions(request):
     """Show list of transactions with buttons to edit/delete"""
