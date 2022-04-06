@@ -182,7 +182,7 @@ def admin_users(request):
     if request.POST:
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM allusers WHERE phoneno = %s", [request.POST['phoneno']])
+                cursor.execute("DELETE FROM allusers WHERE phoneno = %s", [request.POST['id']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
@@ -240,3 +240,32 @@ def admin_products(request):
     result_dict = {'products': products}
 
     return render(request, 'app/admin_product.html', result_dict)
+
+def admin_products_edit(request, id):
+    """Shows the admin_users_edit page"""
+
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+        obj = cursor.fetchone()
+
+    status = ''
+    # save the data from the form
+
+    if request.POST:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "UPDATE products SET userid = %s, password = %s, phoneno = %s WHERE phoneno = %s"
+                , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
+            status = 'product edited successfully!'
+            cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+            obj = cursor.fetchone()
+
+    context["obj"] = obj
+    context["status"] = status
+
+    return render(request, "app/admin_products_edit.html", context)
