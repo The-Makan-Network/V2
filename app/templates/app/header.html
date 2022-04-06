@@ -16,11 +16,14 @@
       {% if user.is_authenticated %}
       {% if user.is_superuser %}
           <li class="nav-item">
-          <a class="nav-link" href="register/">Admin</a>
+          <a class="nav-link" href="admin"> Administrator Page </a>
         </li>
       {%endif %}
         <li class="nav-item">
-          <a class="nav-link" href="logout">{{user.username}}, Logout</a>
+          <a class="nav-link" href="profile/{{user.username}}"> {{ user.username }} </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout"> Logout </a>
         </li>
       {% else %}
         <li class="nav-item">
@@ -33,10 +36,16 @@
       {% endif %}
 
       </ul>
-      <form class="d-flex" method=POST action="{% url 'login' %}">
+      <form class="d-flex" method=POST action="search_products/">
         {% csrf_token %}
 
-        <input class="form-control me-2" type="search" placeholder="Search Venues" aria-label="Search" name="searched">
+        <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+      <form class="d-flex" method=POST action="search_users/">
+        {% csrf_token %}
+
+        <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary" type="submit">Search</button>
       </form>
     </div>
