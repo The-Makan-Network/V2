@@ -92,8 +92,8 @@ def profile(request, id):
 
 
 def view(request, id):
-"""Shows the main page"""
-    ##Use raw query to get a customer
+	"""Shows the main page"""
+	##Use raw query to get a customer
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
 		customer = cursor.fetchone()
