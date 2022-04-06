@@ -114,10 +114,7 @@ def view(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
         customer = cursor.fetchone()
-        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-        transaction = cursor.fetchall
     result_dict = {'cust': customer}
-    order_dict = {'transaction': transaction}
 
     ##use raw query to get the current orders
     # with connection.cursor() as cursor:
@@ -150,7 +147,7 @@ def search_users(request):
     return render(request, 'app/search_users.html', result_dict)
 
 
-def user_purchase(request):
+def user_purchase(request, id):
     # context = {}
     # status = ''
     # phoneno = request.phoneno
@@ -159,7 +156,11 @@ def user_purchase(request):
     # cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     # , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"],
     #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
-    return render(request, 'app/purchase.html')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+        transactions = cursor.fetchall
+        result_dict = {'transactions': transactions}
+    return render(request, 'app/purchase.html', result_dict)
 
 
 def purchase_more(request):
