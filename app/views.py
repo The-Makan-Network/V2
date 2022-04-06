@@ -182,7 +182,7 @@ def admin_users(request):
     if request.POST:
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM allusers WHERE phoneno = %s", [request.POST['id']])
+                cursor.execute("DELETE FROM allusers WHERE phoneno = %s", [request.POST['phoneno']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
