@@ -241,7 +241,7 @@ def admin_products(request):
 
     return render(request, 'app/admin_product.html', result_dict)
 
-def admin_products_edit(request, id):
+def admin_product_edit(request, id):
     """Shows the admin_products_edit page"""
 
     # dictionary for initial data with
