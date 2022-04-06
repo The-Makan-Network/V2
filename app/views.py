@@ -95,12 +95,11 @@ def view(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
-        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-	customer = cursor.fetchone()
-    order_dict = {'status': transactions}
-    result_dict = {'cust': customer}
+	with connection.cursor() as cursor:
+		cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+		cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+		customer = cursor.fetchone()
+	result_dict = {'cust': customer}
 
     ##use raw query to get the current orders
     #with connection.cursor() as cursor:
