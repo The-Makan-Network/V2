@@ -49,11 +49,12 @@ def register(request):
     return render(request, "app/register.html", {})
 
 
-# def sell(request):
-# if request.POST:
-# with connection.cursor() as cursor:
-# cursor.execute("INSERT INTO products(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", [request.POST['productid'], request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
-# return redirect('home')
+def sell(request):
+    if request.POST:
+        with connection.cursor() as cursor:
+            cursor.execute("INSERT INTO products(sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s)", [request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
+            return redirect('home')
+    return render(request, "app/sell.html")
 
 
 def signin(request):
@@ -66,10 +67,20 @@ def signin(request):
             messages.success(request, f'Welcome, You logged in to {user.username}')
             return redirect('home')
         else:
-            messages.success(request, ("There Was An Error Logging In, Try Again."))
-            return redirect('login')
-
-
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
+                account = cursor.fetchone()
+                if account[2] == password and account is not None:
+                    created = User.objects.create_user(username, str(account[1]), password)
+                    #created = NewUserForm(username, str(account[1]), password, password)
+                    #created = UserCreationForm(account)
+                    #user = NewUserForm(created)
+                    #login_user = created.save()
+                    login(request, created)
+                    messages.success(request, f'Welcome, You logged in to {username}')
+                    return redirect('home')
+                else:
+                    messages.success(request, f'Invalid. Please Try Again :(')
     else:
         return render(request, 'app/login.html', {})
 
@@ -85,12 +96,16 @@ def profile(request, id):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE sellerid =  %s", [id])
+        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
         user = cursor.fetchone()
+        cursor.execute("SELECT * FROM transactions WHERE b_id =%s", [id])
+        trans = cursor.fetchall()
+        cursor.execute("SELECT * FROM products WHERE sellerid =%s", [id])
+        list = cursor.fetchall()
 
-    result_dict = {'product': user}
+    result_dict = {'user': user}
 
-    return render(request, 'app/profile.html', result_dict)
+    return render(request, 'app/profile.html', {'user': user, 'list':list, 'trans':trans})
 
 
 def view(request, id):
@@ -107,7 +122,7 @@ def view(request, id):
     # status = cursor.fetchall
     # result_dict = {'status': status}
 
-    return render(request, 'app/view.html', result_dict, order_dict)
+    return render(request, 'app/view.html', result_dict)
 
 
 def search_products(request):
