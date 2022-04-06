@@ -70,7 +70,7 @@ def signin(request):
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
                 account = cursor.fetchone()
-                if account[2] == password:
+                if account[2] == password and account is not None:
                     created = User.objects.create_user(username, str(account[1]), password)
                     #created = NewUserForm(username, str(account[1]), password, password)
                     #created = UserCreationForm(account)
@@ -80,11 +80,7 @@ def signin(request):
                     messages.success(request, f'Welcome, You logged in to {username}')
                     return redirect('home')
                 else:
-                    messages.success(request, f'Invalid, You logged in to password {account[2]}')
-            messages.success(request, f'{username} {password}')	
-            return redirect('login')	
-
-
+                    messages.success(request, f'Invalid. Please Try Again :(')
     else:
         return render(request, 'app/login.html', {})
 
