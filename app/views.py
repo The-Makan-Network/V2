@@ -67,8 +67,22 @@ def signin(request):
             messages.success(request, f'Welcome, You logged in to {user.username}')
             return redirect('home')
         else:
-            messages.success(request, ("There Was An Error Logging In, Try Again."))
-            return redirect('login')
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM allusers WHERE userid = %s", [username])
+                account = cursor.fetchone()
+                if account[2] == password:
+                    created = User.objects.create_user(username, str(account[1]), password)
+                    #created = NewUserForm(username, str(account[1]), password, password)
+                    #created = UserCreationForm(account)
+                    #user = NewUserForm(created)
+                    #login_user = created.save()
+                    login(request, created)
+                    messages.success(request, f'Welcome, You logged in to {username}')
+                    return redirect('home')
+                else:
+                    messages.success(request, f'Invalid, You logged in to password {account[2]}')
+            messages.success(request, f'{username} {password}')	
+            return redirect('login')	
 
 
     else:
@@ -86,12 +100,16 @@ def profile(request, id):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE sellerid =  %s", [id])
+        cursor.execute("SELECT * FROM allusers WHERE userid =  %s",[id])
         user = cursor.fetchone()
+        cursor.execute("SELECT * FROM transactions WHERE b_id =%s", [id])
+        trans = cursor.fetchall()
+        cursor.execute("SELECT * FROM products WHERE sellerid =%s", [id])
+        list = cursor.fetchall()
 
-    result_dict = {'product': user}
+    result_dict = {'user': user}
 
-    return render(request, 'app/profile.html', result_dict)
+    return render(request, 'app/profile.html', {'user': user, 'list':list, 'trans':trans})
 
 
 def view(request, id):
