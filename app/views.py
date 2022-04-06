@@ -187,7 +187,7 @@ def admin_users(request):
     return render(request, 'app/admin_users.html', result_dict)
 
 
-def admin_edit(request, id):
+def admin_users_edit(request, id):
     """Shows the admin_users_edit page"""
 
     # dictionary for initial data with
