@@ -286,7 +286,7 @@ def admin_transactions(request):
 
     result_dict = {'transactions': transactions}
 
-    return render(request, 'app/admin_product.html', result_dict)
+    return render(request, 'app/admin_transactions.html', result_dict)
 
 def admin_transactions_edit(request, id):
     """Shows the admin_transactions_edit page"""
@@ -306,8 +306,8 @@ def admin_transactions_edit(request, id):
     if request.POST:
         with connection.cursor() as cursor:
             cursor.execute(
-                "UPDATE transactions SET userid = %s, password = %s, phoneno = %s WHERE phoneno = %s"
-                , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
+                "UPDATE transactions SET orderid = %s, b_id = %s, s_id = %s, p_id = %s, qty = %s, delivery = %s, status = %s, WHERE orderid = %s"
+                , [request.POST['orderid'], request.POST['b_id'], request.POST['s_id'], request.POST['p_id'], request.POST['qty'], request.POST['delivery'], request.POST['status'], id])
             status = 'transaction edited successfully!'
             cursor.execute("SELECT * FROM transactions WHERE orderid = %s", [id])
             obj = cursor.fetchone()
