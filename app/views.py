@@ -180,9 +180,9 @@ def admin_users(request):
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM allusers ORDER BY phoneno")
-        users = cursor.fetchall()
+        user = cursor.fetchall()
 
-    result_dict = {'user': users}
+    result_dict = {'user': user}
 
     return render(request, 'app/admin_users.html', result_dict)
 
