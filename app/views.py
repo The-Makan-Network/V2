@@ -182,7 +182,7 @@ def admin_users(request):
         cursor.execute("SELECT * FROM allusers ORDER BY phoneno")
         users = cursor.fetchall()
 
-    result_dict = {'records': users}
+    result_dict = {'user': users}
 
     return render(request, 'app/admin_users.html', result_dict)
 
