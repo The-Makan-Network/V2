@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import NewUserForm
 from django.http import HttpResponseRedirect
 
+
 # Create your views here.
 def home(request):
     """Shows the product listing page"""
@@ -19,9 +20,9 @@ def home(request):
 
     return render(request, 'app/home.html', result_dict)
 
+
 # Create your views here.
 def register(request):
-
     if request.POST:
         form = NewUserForm(request.POST)
         ## Check if userid is already in the table
@@ -35,7 +36,7 @@ def register(request):
             elif user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO allusers(userid, phoneno, password) VALUES (%s, %s, %s)"
-                        , [request.POST['username'], request.POST['phoneno'], request.POST['password1'] ])
+                               , [request.POST['username'], request.POST['phoneno'], request.POST['password1']])
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {username}!"))
@@ -43,17 +44,18 @@ def register(request):
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
                 return redirect('register')
-		
+
     form = NewUserForm()
     return render(request, "app/register.html", {})
 
-#def sell(request):
-    #if request.POST:
-	#with connection.cursor() as cursor:
-	    #cursor.execute("INSERT INTO products(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", [request.POST['productid'], request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
-	    #return redirect('home')
-			        
-	
+
+# def sell(request):
+# if request.POST:
+# with connection.cursor() as cursor:
+# cursor.execute("INSERT INTO products(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", [request.POST['productid'], request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
+# return redirect('home')
+
+
 def signin(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -64,18 +66,18 @@ def signin(request):
             messages.success(request, f'Welcome, You logged in to {user.username}')
             return redirect('home')
         else:
-            messages.success(request, ("There Was An Error Logging In, Try Again."))	
-            return redirect('login')	
+            messages.success(request, ("There Was An Error Logging In, Try Again."))
+            return redirect('login')
 
 
     else:
         return render(request, 'app/login.html', {})
 
-	
+
 def signout(request):
-	logout(request)
-	messages.success(request, ("You Were Logged Out!"))
-	return redirect('home')
+    logout(request)
+    messages.success(request, ("You Were Logged Out!"))
+    return redirect('home')
 
 
 def profile(request, id):
@@ -83,7 +85,7 @@ def profile(request, id):
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM products WHERE sellerid =  %s",[id])
+        cursor.execute("SELECT * FROM products WHERE sellerid =  %s", [id])
         user = cursor.fetchone()
 
     result_dict = {'product': user}
@@ -92,23 +94,24 @@ def profile(request, id):
 
 
 def view(request, id):
-	"""Shows the main page"""
-	##Use raw query to get a customer
-	with connection.cursor() as cursor:
-		cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
-		customer = cursor.fetchone()
-		cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-		transaction = cursorr.fetchall
-	result_dict = {'cust': customer}
-	order_dict ={'transaction': transaction}
+    """Shows the main page"""
+    ##Use raw query to get a customer
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
+        customer = cursor.fetchone()
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+        transaction = cursor.fetchall
+    result_dict = {'cust': customer}
+    order_dict = {'transaction': transaction}
 
     ##use raw query to get the current orders
-    #with connection.cursor() as cursor:
-        #cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-        #status = cursor.fetchall
-    #result_dict = {'status': status}
+    # with connection.cursor() as cursor:
+    # cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+    # status = cursor.fetchall
+    # result_dict = {'status': status}
 
-    	return render(request,'app/view.html',result_dict,order_dict)
+    return render(request, 'app/view.html', result_dict, order_dict)
+
 
 def search_products(request):
     qns = request.POST['searched']
@@ -118,7 +121,8 @@ def search_products(request):
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
-    return render(request, 'app/search_products.html', result_dict)				  
+    return render(request, 'app/search_products.html', result_dict)
+
 
 def search_users(request):
     qns = request.POST['searched']
@@ -128,23 +132,26 @@ def search_users(request):
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
-    return render(request, 'app/search_users.html', result_dict)				  
-				  
+    return render(request, 'app/search_users.html', result_dict)
+
+
 def user_purchase(request):
-	#context = {}
-	#status = ''
-	#phoneno = request.phoneno
-	#if request.POST['action'] == "purchase":
-	  #with connection.cursor() as cursor:
-	    #cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-			   #, [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"], 
-			    #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
-	return render(request, 'app/purchase.html')
-			
+    # context = {}
+    # status = ''
+    # phoneno = request.phoneno
+    # if request.POST['action'] == "purchase":
+    # with connection.cursor() as cursor:
+    # cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    # , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"],
+    #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
+    return render(request, 'app/purchase.html')
+
+
 def purchase_more(request):
-	if request.POST['action'] == "backhome":
-		return redirect('home')
-	
+    if request.POST['action'] == "backhome":
+        return redirect('home')
+
+
 def admin_users(request):
     """Show list of allusers with buttons to edit/delete"""
 
@@ -161,7 +168,8 @@ def admin_users(request):
 
     result_dict = {'records': users}
 
-    return render(request,'app/admin_users.html',result_dict)
+    return render(request, 'app/admin_users.html', result_dict)
+
 
 def admin_edit(request, id):
     """Shows the admin_users_edit page"""
