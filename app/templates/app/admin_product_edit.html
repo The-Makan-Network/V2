@@ -12,10 +12,15 @@
         <!-- Security token by Django -->
         {% csrf_token %}
         <!-- form -->
-        <div id="div_id_user_id" class="control-group"> <label for="id_user_id" class="control-label requiredField">
-        User Id<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="user_id" value="{{obj.0}}" maxlength="64" class="textinput textInput" required="" id="id_user_id"> </div> </div> <div id="div_id_password" class="control-group"> <label for="id_password" class="control-label requiredField">
-        Password<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="password" value="{{obj.2}}" maxlength="64" class="textinput textInput" required="" id="id_password"> </div> </div> <div id="div_id_phoneno" class="control-group"> <label for="id_phoneno" class="control-label requiredField">
-        phoneno<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="phoneno" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_phoneno"> </div> </div>
+        <div id="div_id_productid" class="control-group"> <label for="id_productid" class="control-label requiredField">
+        Product Id<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="productid" value="{{obj.0}}" maxlength="64" class="textinput textInput" required="" id="id_productid"> </div> </div> <div id="div_id_sellerid" class="control-group"> <label for="id_sellerid" class="control-label requiredField">
+        Seller id<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="sellerid" value="{{obj.2}}" maxlength="64" class="textinput textInput" required="" id="id_sellerid"> </div> </div> <div id="div_id_name" class="control-group"> <label for="id_name" class="control-label requiredField">
+        Name<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="name" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_name"> </div> </div> <div id="div_id_description" class="control-group"> <label for="id_description" class="control-label requiredField">
+        Description<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="description" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_description"> </div> </div> <div id="div_id_price" class="control-group"> <label for="id_price" class="control-label requiredField">
+        Price<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="price" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_price"> </div> </div> <div id="div_id_category" class="control-group"> <label for="id_category" class="control-label requiredField">
+        Category<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="category" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_category"> </div> </div> <div id="div_id_allergen" class="control-group"> <label for="id_allergen" class="control-label requiredField">
+        Allergen<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="allergen" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_allergen"> </div> </div> <div id="div_id_minorder" class="control-group"> <label for="id_minorder" class="control-label requiredField">
+        Minimum Orders<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="minorder" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_minorder"> </div> </div>
         <br>
         <button type="submit" value="Update">Update</button>
     </form>

@@ -259,8 +259,8 @@ def admin_product_edit(request, id):
     if request.POST:
         with connection.cursor() as cursor:
             cursor.execute(
-                "UPDATE products SET userid = %s, password = %s, phoneno = %s WHERE phoneno = %s"
-                , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
+                "UPDATE products SET productid = %s, sellerid = %s, name = %s, description = %s, price = %s, category = %s, allergen = %s, minorder = %s WHERE productid = %s"
+                , [request.POST['productid'], request.POST['sellerid'], request.POST['name'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'], id])
             status = 'product edited successfully!'
             cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
             obj = cursor.fetchone()

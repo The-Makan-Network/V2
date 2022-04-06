@@ -34,7 +34,7 @@
                 |
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
-                <input type="hidden" name="id" value="{{transactionsd.0}}"/>
+                <input type="hidden" name="id" value="{{transactions.0}}"/>
                 <button onclick="return confirm('Are you sure you want to delete {{transactions.0}}?');" type="submit" name="action" value="delete">Delete</button>
               </form></td>
         </tr>
