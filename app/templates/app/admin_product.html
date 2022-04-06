@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Products</title>
+</head>
+<body>
+    {% include 'app/header.html' %}
+    <br/>
+    <a href={% url 'admin user' %}>Users</a>
+    <a href="admin_transaction">Transactions</a>
+    <br/><br/>
+    <table border=1>
+        <thead>
+            <th>Product Id</th>
+            <th>Seller Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Allergen</th>
+            <th>Min Order</th>
+        </thead>
+        {% for user in user %}
+        <tr>
+            <td> {{ products.0 }} </td>
+            <td> {{ products.1 }} </td>
+            <td> {{ products.2 }} </td>
+            <td> {{ products.3 }} </td>
+            <td> {{ products.4 }} </td>
+            <td> {{ products.5 }} </td>
+            <td> {{ products.6 }} </td>
+            <td> {{ products.7 }} </td>
+            <td>
+                <a href="admin_user_edit/{{products.0}}"><button>Edit</button></a>
+                |
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{products.0}}"/>
+                <button onclick="return confirm('Are you sure you want to delete {{products.0}}?');" type="submit" name="action" value="delete">Delete</button>
+              </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

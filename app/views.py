@@ -222,3 +222,21 @@ def admin_users_edit(request, id):
     context["status"] = status
 
     return render(request, "app/admin_users_edit.html", context)
+
+def admin_products(request):
+    """Show list of allusers with buttons to edit/delete"""
+
+    ## Delete customer
+    if request.POST:
+        if request.POST['action'] == 'delete':
+            with connection.cursor() as cursor:
+                cursor.execute("DELETE FROM products WHERE productid = %s", [request.POST['id']])
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM products ORDER BY productid")
+        products = cursor.fetchall()
+
+    result_dict = {'products': products}
+
+    return render(request, 'app/admin_product.html', result_dict)
