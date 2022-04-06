@@ -97,9 +97,8 @@ def view(request, id):
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
-        customer = cursor.fetchone()
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-        transactions = cursor.fetchall
+	customer = cursor.fetchone()
     order_dict = {'status': transactions}
     result_dict = {'cust': customer}
 
