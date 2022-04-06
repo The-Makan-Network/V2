@@ -158,8 +158,8 @@ def user_purchase(request, id):
     #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
     with connection.cursor() as cursor:
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
-        transactions = cursor.fetchall
-        result_dict = {'transactions': transactions}
+        transactions = cursor.fetchall()
+    result_dict = {'transactions': transactions}
     return render(request, 'app/purchase.html', result_dict)
 
 
