@@ -30,8 +30,8 @@ urlpatterns = [
     path('view/purchase', app.views.user_purchase, name='purchase'),
     path('view/home', app.views.purchase_more, name='purchasemore'),
     path('sell_something/', app.views.sell, name="sell")
-    #path('searchproduct/', app.views.product_search, name='searchproduct'),
-    #path('searchuser/', app.views.user_search, name='searchuser')
+    #path('searchproduct/', app.views.search_product, name='search_product'),
+    #path('searchuser/', app.views.search_user, name='search_user')
     
 ]
 
