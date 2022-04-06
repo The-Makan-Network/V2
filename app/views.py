@@ -224,15 +224,15 @@ def admin_users_edit(request, id):
     return render(request, "app/admin_users_edit.html", context)
 
 def admin_products(request):
-    """Show list of allusers with buttons to edit/delete"""
+    """Show list of products with buttons to edit/delete"""
 
-    ## Delete customer
+    # Delete customer
     if request.POST:
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
                 cursor.execute("DELETE FROM products WHERE productid = %s", [request.POST['id']])
 
-    ## Use raw query to get all objects
+    # Use raw query to get all objects
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM products ORDER BY productid")
         products = cursor.fetchall()
@@ -242,7 +242,7 @@ def admin_products(request):
     return render(request, 'app/admin_product.html', result_dict)
 
 def admin_products_edit(request, id):
-    """Shows the admin_users_edit page"""
+    """Shows the admin_products_edit page"""
 
     # dictionary for initial data with
     # field names as keys
@@ -269,3 +269,50 @@ def admin_products_edit(request, id):
     context["status"] = status
 
     return render(request, "app/admin_products_edit.html", context)
+
+def admin_transactions(request):
+    """Show list of transactions with buttons to edit/delete"""
+
+    # Delete customer
+    if request.POST:
+        if request.POST['action'] == 'delete':
+            with connection.cursor() as cursor:
+                cursor.execute("DELETE FROM transactions WHERE orderid = %s", [request.POST['id']])
+
+    # Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM transactions ORDER BY orderid")
+        transactions = cursor.fetchall()
+
+    result_dict = {'transactions': transactions}
+
+    return render(request, 'app/admin_product.html', result_dict)
+
+def admin_products_edit(request, id):
+    """Shows the admin_transactions_edit page"""
+
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # fetch the object related to passed id
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM transactions WHERE orderid = %s", [id])
+        obj = cursor.fetchone()
+
+    status = ''
+    # save the data from the form
+
+    if request.POST:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "UPDATE transactions SET userid = %s, password = %s, phoneno = %s WHERE phoneno = %s"
+                , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
+            status = 'transaction edited successfully!'
+            cursor.execute("SELECT * FROM transactions WHERE orderid = %s", [id])
+            obj = cursor.fetchone()
+
+    context["obj"] = obj
+    context["status"] = status
+
+    return render(request, "app/admin_transactions_edit.html", context)
