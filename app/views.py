@@ -110,7 +110,7 @@ def view(request, id):
     # status = cursor.fetchall
     # result_dict = {'status': status}
 
-    return render(request, 'app/view.html', result_dict, order_dict)
+    return render(request, 'app/view.html', result_dict)
 
 
 def search_products(request):
