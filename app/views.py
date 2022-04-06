@@ -50,8 +50,7 @@ def register(request):
 def sell(request):
     if request.POST:
 	with connection.cursor() as cursor:
-	    cursor.execute("INSERT INTO products(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-		    , [request.POST['productid'], request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
+	    cursor.execute("INSERT INTO products(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)", [request.POST['productid'], request.POST['username'], request.POST['foodname'], request.POST['description'], request.POST['price'], request.POST['category'], request.POST['allergen'], request.POST['minorder'] ])
 	    return redirect('home')
 			        
 	
