@@ -92,14 +92,15 @@ def profile(request, id):
 
 
 def view(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
+"""Shows the main page"""
+    ##Use raw query to get a customer
 	with connection.cursor() as cursor:
 		cursor.execute("SELECT * FROM products WHERE productid = %s", [id])
-		cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
 		customer = cursor.fetchone()
+		cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
+		transaction = cursorr.fetchall
 	result_dict = {'cust': customer}
+	order_dict ={'transaction': transaction}
 
     ##use raw query to get the current orders
     #with connection.cursor() as cursor:
@@ -107,7 +108,7 @@ def view(request, id):
         #status = cursor.fetchall
     #result_dict = {'status': status}
 
-    return render(request,'app/view.html',result_dict)
+    return render(request,'app/view.html',result_dict,order_dict)
 
 def search_products(request):
     qns = request.POST['searched']
