@@ -5,13 +5,33 @@
     <title>Admin Products</title>
 </head>
 <body>
-    <h2> The Makan Network </h2>
     <br/>
     {% include 'app/header.html' %}
     <br/>
     <a href="admin_users">Products</a>
     <a href="admin_transactions">Transactions</a>
     <br/><br/>
-
+    <table border=1>
+        <thead>
+            <th>Product Id</th>
+            <th>Password</th>
+            <th>Phone number</th>
+        </thead>
+        {% for user in user %}
+        <tr>
+            <td> {{ user.0 }} </td>
+            <td> {{ user.2 }} </td>
+            <td> {{ user.1 }} </td>
+            <td>
+                <a href="admin_user_edit/{{user.1}}"><button>Edit</button></a>
+                |
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{user.0}}"/>
+                <button onclick="return confirm('Are you sure you want to delete {{user.0}}?');" type="submit" name="action" value="delete">Delete</button>
+              </form></td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
