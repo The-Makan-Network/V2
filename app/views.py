@@ -212,7 +212,7 @@ def admin_users_edit(request, id):
     if request.POST:
         with connection.cursor() as cursor:
             cursor.execute(
-                "UPDATE allusers SET user_id = %s, password = %s, phoneno = %s WHERE phoneno = %s"
+                "UPDATE allusers SET userid = %s, password = %s, phoneno = %s WHERE phoneno = %s"
                 , [request.POST['user_id'], request.POST['password'], request.POST['phoneno'], id])
             status = 'Customer edited successfully!'
             cursor.execute("SELECT * FROM allusers WHERE phoneno = %s", [id])
