@@ -178,6 +178,33 @@ def purchase(request):
         messages.success(request, f'You bought {qty}x of this item.')
         return render(request, 'app/view.html', {'cust':customer, 'order':order})
 
+def sort_top(request):
+    qns = request.GET['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY coalesce(sum(t.qty),0) DESC", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
+
+def sort_priceup(request):
+    qns = request.GET['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY p.price;", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
+
+def sort_pricedown(request):
+    qns = request.GET['qns']
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.name, p.description, p.price, p.category, p.allergen, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid =t.p_id WHERE lower(p.name) LIKE lower(%s) GROUP BY p.productid ORDER BY p.price DESC;", [qns])
+        searched = cursor.fetchall()
+    result_dict = {'searched': searched}
+
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})    
+    
 def user_purchase(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
