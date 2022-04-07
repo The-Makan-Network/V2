@@ -16,22 +16,22 @@
       {% if user.is_authenticated %}
       {% if user.is_superuser %}
           <li class="nav-item">
-          <a class="nav-link" href="admin"> Administrator Page </a>
+            <a class="nav-link" href="admin"><strong>Administrator Page</strong></a>
         </li>
       {%endif %}
         <li class="nav-item">
           <a class="nav-link" href= "{% url 'profile' user.username %}" > {{ user.username }} </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+          <a class="nav-link" href="{% url 'logout' %}"><strong>Logout</strong></a>
         </li>
       {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
+          <a class="nav-link" href="{% url 'register' %}"><strong>Register</strong></a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
+          <a class="nav-link" href="{% url 'login' %}"><strong>Login</strong></a>
         </li>
       {% endif %}
 
