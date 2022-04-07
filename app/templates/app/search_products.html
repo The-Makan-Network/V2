@@ -15,9 +15,9 @@
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
-                    <h2 class="name"> Product #{{ searched.0 }} </h2>
-                    <h3 class="price"> Seller: {{ searched.1 }} </h3>
-                    <h3 class="price"> Name of Yummy:{{ searched.2 }} </h3>
+                    <h2 class="id"> Product #{{ searched.0 }} </h2>
+                    <h3 class="seller"> Seller: {{ searched.1 }} </h3>
+                    <h3 class="name"> Name of Yummy: {{ searched.2 }} </h3>
                     <div class="viewbutton">
                       <a href={% url 'view' searched.0 %} button class="btn btn-outline-primary" type="button">View More</a>
                     </div>
@@ -88,14 +88,18 @@ h2, h3 {
   margin: 0.2em auto;
 }
 
-.name, .price {
+.name, .seller, .id {
   clear: left;
   width: 100%;
   text-align: center;
 }
 
-.price {
+.seller {
   color: Grey;
+}
+
+.name {
+  color: Crimson;
 }
 
 .viewbutton, .minorder, .description, .search {
