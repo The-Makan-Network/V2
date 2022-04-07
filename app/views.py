@@ -82,6 +82,7 @@ def signin(request):
                     return redirect('home')
                 else:
                     messages.success(request, f'Invalid. Please Try Again :(')
+                    return redirect('login')
     else:
         return render(request, 'app/login.html', {})
 
