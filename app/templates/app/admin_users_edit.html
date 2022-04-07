@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <style>
+        .button {
+            background-color: #0e5b8a;
+            border: none;
+            color: whitesmoke;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 3px 1px;
+            cursor: pointer;
+        }
         .btn-group button {
             background-color: #0e5b8a; /* Green background */
             border: 1px solid black; /* Green border */
@@ -18,6 +30,20 @@
         .btn-group button:hover {
             background-color: sandybrown;
         }
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #0e5b8a;
+            border-radius: 4px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+        input[type=text]:focus {
+            border: 3px solid #555;
+        }
     </style>
     <meta charset="UTF-8">
     <title>Admin Users Edit</title>
@@ -28,7 +54,7 @@
     <br>
     <div class="btn-group">
         <a href="{% url 'admin_transaction' %}"><button>Transactions</button></a>
-        <a href="{% url 'admin user' %}"><button>Users</button></a>
+        <a href="{% url 'admin_product' %}"><button>Products</button></a>
     </div>
     <!-- Create a Form -->
     <form method="POST">
@@ -40,7 +66,7 @@
         Password<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="password" value="{{obj.2}}" maxlength="64" class="textinput textInput" required="" id="id_password"> </div> </div> <div id="div_id_phoneno" class="control-group"> <label for="id_phoneno" class="control-label requiredField">
         phoneno<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="phoneno" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_phoneno"> </div> </div>
         <br>
-        <button type="submit" value="Update">Update</button>
+        <button type="submit" value="Update" class="button">Update</button>
     </form>
 </body>
 </html>
