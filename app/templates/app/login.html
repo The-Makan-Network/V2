@@ -12,21 +12,23 @@
     <form method="post">
       {% csrf_token %}
 
-      <div id="div_id_username" class="form-group">
+      <div id="div_username" class="form-group">
         <label for="username" class="requiredField">
           <b>UserID</b>
+          <span class="asteriskField">*</span>
         </label>
         <div>
           <input type="text" placeholder="Enter UserID" name="username" maxlength="200" class="textinput textInput form-control" required>
         </div>
       </div>
       
-      <div id="div_id_password" class="form-group">
+      <div id="div_password1" class="form-group">
         <label for="password1" class="requiredField">
           <b>Password</b>
+          <span class="asteriskField">*</span>
         </label>
         <div>
-          <input type="password" placeholder="Enter Password" name="password1" required>
+          <input type="password" placeholder="Enter Password" name="password1" maxlength="200" class="textinput textInput form-control" required>
         </div>
       </div>
       
@@ -36,7 +38,7 @@
 
       <div class="container" style="background-color:#f1f1f1">
         <p>
-          "Haven't joined The Makan Family? "
+          Haven't joined The Makan Family?
           <span class="text"><a href={% url 'register' %}>Register with us!</a></span>
         </p>
       </div>
