@@ -12,21 +12,21 @@
     <br/><br/>
     <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
-            <th>Product Id</th>
-            <th>Seller Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Allergen</th>
-            <th>Min Order</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Product Id</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Seller Id</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Name</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Description</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Price</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Category</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Allergen</th>
+            <th style="text-align: center; font-family:'Roboto Thin'">Min Order</th>
         </thead>
         {% for products in products %}
         <tr>
             <td> {{ products.0 }} </td>
             <td> {{ products.1 }} </td>
             <td> {{ products.2 }} </td>
-            <td style="word-wrap: break-word"> {{ products.3 }} </td>
+            <td> {{ products.3 }} </td>
             <td> {{ products.4 }} </td>
             <td> {{ products.5 }} </td>
             <td> {{ products.6 }} </td>
