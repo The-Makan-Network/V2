@@ -13,7 +13,8 @@
         <div class="listing-section">
             {% if searched %}
                 
-             <div class="btn-group" role="group">
+<div class="btn-group" role="group">
+        <p text-align=center>Sort by: {{ qns }}</p>
         <form action = "{% url 'sort_top' %}">
 
         <input type="hidden" id="qns" name="qns" value="{{ qns }}">
@@ -32,9 +33,7 @@
         </form>
         </div>
 
-        <br></br>   
-        
-        
+        <br></br>
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
@@ -135,6 +134,19 @@ h2, h3 {
   text-align: center;
   margin: 0.2em auto;
 }
+
+.btn-group {
+  float: left;
+  clear: left;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  text-align: center;
+  margin: 0.2em auto;
+}
+
+
 
 input:focus {
   outline-color: #fdf;
