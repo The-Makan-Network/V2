@@ -34,7 +34,7 @@ urlpatterns = [
     path('view/<int:id>', app.views.view, name='view'),
     path('view/purchase/<int:id>', app.views.user_purchase, name='purchase'),
     path('view/home', app.views.purchase_more, name='purchasemore'),
-    path('profile/<str:id>/sell_something/', app.views.sell, name="sell"),
+    path('sell_something/', app.views.sell, name="sell"),
     path('search_products/', app.views.search_products, name='search_products'),
     path('search_users/', app.views.search_users, name='search_users')
     
