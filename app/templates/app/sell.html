@@ -6,84 +6,144 @@
 </head>
 <body>
 {% include 'app/header.html' %}
-<h2>Tell me more about the YUMMIES you boutta sell!</h2>
+  <div class="container mt-4 mb-2">
+    <h2>Tell me more about the YUMMIES you boutta sell!</h2>
 
-<form method="post">
-  {% csrf_token %}
-  <div class="container">
-    <label for="username"><b>UserID</b></label>
-    <input type="text" placeholder="Enter UserID" name="username" aria-describedby="usernameHelpInline" maxlength="16" required>
-    <span id="usernameHelpInline" class="form-text">
-      Maximum 16 characters long.
-    </span>
-  </div>
+    <form method="post">
+      {% csrf_token %}
+      <div id="div_username" class="form-group">
+        <label for="username" class="requiredField">
+          <b>UserID</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="Enter UserID" name="username" maxlength="200" class="textinput textInput form-control" aria-describedby="usernameHelpInline" required>
+          <span id="usernameHelpInline" class="form-text">
+            <ul>
+              <li>
+                Maximum 16 characters long.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
   
-  <br></br>
-
-  <div class="container">
-    <label for="foodname"><b>Name of Food</b></label>
-    <input type="text" placeholder="Enter Name of Food" name="foodname" aria-describedby="foodnameHelpInline" maxlength="64" required>
-    <span id="foodnameHelpInline" class="form-text">
-      Maximum 64 characters long. You can describe all you want later.
-    </span>
-  </div>
+  <br>
+      <div id="div_foodname" class="form-group">
+        <label for="foodname" class="requiredField">
+          <b>Name of Food</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="What is your food called?" name="foodname" maxlength="200" class="textinput textInput form-control" aria-describedby="foodnameHelpInline" required>
+          <span id="foodnameHelpInline" class="form-text">
+            <ul>
+              <li>
+                Maximum 64 characters long. You can describe all you want later.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
   
-  <br></br>
-
-  <div class="container">
-    <label for="description"><b>Description</b></label>
-    <input type="text" placeholder="Describe your food like it is FoodKing Good!" name="description" aria-describedby="descriptionHelpInline" maxlength="256" required>
-    <span id="descriptionHelpInline" class="form-text">
-      Be glad that you can type more than a tweet. Maximum 256 characters.
-    </span>
-  </div>
+  <br>
+      <div id="div_description" class="form-group">
+        <label for="description" class="requiredField">
+          <b>Description</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="Describe your food like it is FoodKing Good!" name="description" size="40" maxlength="256" class="textinput textInput form-control" aria-describedby="descriptionHelpInline" required>
+          <span id="descriptionHelpInline" class="form-text">
+            <ul>
+              <li>
+                Be glad that you can type more than a tweet. Maximum 256 characters though.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
   
-  <br></br>
+  <br>
+      <div id="div_price" class="form-group">
+        <label for="price" class="requiredField">
+          <b>Price$</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="This is pretty sensitive, think carefully" name="price" size="40" maxlength="256" class="textinput textInput form-control" aria-describedby="priceHelpInline" required>
+          <span id="descriptionHelpInline" class="form-text">
+            <ul>
+              <li>
+                No, people wont spend more than $20 for a container of pineapple tarts.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
   
-  <div class="container">    
-    <label for="price"><b>Price</b></label>
-    <input type="number" min="1" step="any" placeholder="Think carefully" name="price" aria-describedby="priceHelpInline" maxlength="12" required>
-    <span id="priceHelpInLine" class="form-text">
-      No, people wont spend more than $20 for a container of pineapple tarts.
-    </span>
-  </div>
-  
-  <br></br>
+  <br>
+      <div id="div_category" class="form-group">
+        <label for="category" class="requiredField">
+          <b>Category</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="What would you categorise it under?" name="category" maxlength="256" class="textinput textInput form-control" aria-describedby="categoryHelpInline" required>
+          <span id="categoryHelpInline" class="form-text">
+            <ul>
+              <li>
+                You have one job. Key in either 'dessert', 'ready meals', 'pastries' or 'drinks'. Nothing else.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
 
-  <div class="container">
-    <label for="category"><b>Category</b></label>
-    <input type="text" placeholder="What would you categorise it under?" name="category" aria-describedby="categoryHelpInline" maxlength="32" required>
-    <span id="categoryHelpInline" class="form-text">
-      You have one job. Key in either 'dessert', 'ready meals', 'pastries' or 'drinks'. Nothing else.
-    </span>
-  </div>
+  <br>
+      <div id="div_allergen" class="form-group">
+        <label for="allergen" class="requiredField">
+          <b>Allergens</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="What allergens does it contain?" name="allergen" maxlength="256" class="textinput textInput form-control" aria-describedby="allergenHelpInline" required>
+          <span id="allergenHelpInline" class="form-text">
+            <ul>
+              <li>
+                Please do not send anybody to the hospital. 
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
 
-  <br></br>
+  <br>
+      <div id="div_minorder" class="form-group">
+        <label for="minorder" class="requiredField">
+          <b>Minimum Order</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="Minimum Order" name="minorder" maxlength="256" class="textinput textInput form-control" aria-describedby="minorderHelpInline" required>
+          <span id="minorderHelpInline" class="form-text">
+            <ul>
+              <li>
+                How many orders are you willing to wait for before you get cracking? 
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
 
-  <div class="container">
-    <label for="allergen"><b>Allergens</b></label>
-    <input type="text" placeholder="What allergens does it contain?" name="allergen" aria-describedby="allergenHelpInline" maxlength="32" required>
-    <span id="allergenHelpInline" class="form-text">
-      Please do not send anybody to the hospital. 
-    </span>
-  </div>
-
-  <br></br>
-
-  <div class="container">
-    <label for="minorder"><b>Minimum Order</b></label>
-    <input type="number" placeholder="Minimum Order" name="minorder" aria-describedby="minorderHelpInline" maxlength="8" required>
-    <span id="minorderHelpInline" class="form-text">
-      How many orders are you willing to wait for before you get cracking?
-    </span>
-  </div>
+ <br>
     
-  <div class="container">
-    <button type="submit">May my business prosper!</button>
-  </div>
-  <input type="hidden" id='productid', name="productid", value="53"/>
+      <div>
+        <button class="btn btn-warning" type="submit">May my business prosper!</button>
+      </div>
+      <input type="hidden" id='productid', name="productid", value="53"/>
   
-</form>
+    </form>
 
   <div class="container">
       {% if messages %}
