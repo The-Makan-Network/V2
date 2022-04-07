@@ -21,7 +21,6 @@
           <span id="usernameHelpInline" class="form-text">
             <ul>
               <li>
-                ::marker
                 Maximum 16 characters long.
               </li>
             </ul>
@@ -29,7 +28,7 @@
         </div>
       </div>
   
-  <br></br>
+  <br>
 
       <div id="div_phoneno" class="form-group">
         <label for="phoneno" class="requiredField">
@@ -39,40 +38,60 @@
         <div>
           <input type="tel" placeholder="Enter Phone Number" name="phoneno" maxlength="200" class="textinput textInput form-control" aria-describedby="phonenoHelpInline" required>
           <span id="phonenoHelpInline" class="form-text">
-            Must be 8 numbers long.
+            <ul>
+              <li>
+                Must be 8 numbers long.
+              </li>
+            </ul>
           </span>
         </div>
-    </div>
+      </div>
   
-  <br></br>
+  <br>
 
-  <div class="container">
-    <label for="password1"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password1" aria-describedby="passwordHelpInline" maxlength="12" required>
-    <span id="passwordHelpInline" class="form-text">
-      Must be 8-12 characters long. Cannot be similar to UserID and cannot be entirely numeric.
-    </span>
-  </div>
+      <div id="div_password1" class="form-group">
+        <label for="password1" class="requiredField">
+          <b>Password</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="password" placeholder="Enter Password" name="password1" aria-describedby="passwordHelpInline" maxlength="200" class="textinput textInput form-control" required>
+          <span id="passwordHelpInline" class="form-text">
+            <ul>
+              <li>
+                Must be 8-12 characters long. Cannot be similar to UserID and cannot be entirely numeric.
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
   
-  <br></br>
+  <br>
   
-  <div class="container">    
-    <label for="password2"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="password2" maxlength="12" required>
-  </div>
+      <div id="div_password2" class="form-group">    
+        <label for="password2" class="requiredField">
+          <b>Repeat Password</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="password" placeholder="Repeat Password" name="password2" maxlength="200" class="textinput textInput form-control" required>
+        </div>
+      </div>
   
-  <br></br>
+  <br>
 
-  <div class="container">
-    <button type="submit">Register</button>
-  </div>
+      <div>
+        <button class = "btn btn-success" type="submit">Register</button>
+      </div>
   
 
-  <div class="container" style="background-color:#f1f1f1">
-    <span class="text"><a href="/">Back to Home</a></span>
-    <span class="text"><a href={% url 'login' %}>Already have an account?</a></span>
-  </div>
-</form>
+      <div class="container" style="background-color:#f1f1f1">
+        <p>
+          Already have an account?"
+          <span class="text"><a href={% url 'login' %}>Start Makan-ing!</a></span>
+        </p>
+      </div>
+    </form>
 
   <div class="container">
       {% if messages %}
