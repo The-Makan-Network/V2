@@ -37,7 +37,10 @@ urlpatterns = [
     path('sell_something/', app.views.sell, name="sell"),
     path('search_products/', app.views.search_products, name='search_products'),
     path('search_users/', app.views.search_users, name='search_users'),
-    path('purchase', app.views.purchase, name='purchase')
+    path('purchase', app.views.purchase, name='purchase'),
+    path('sort_top', app.views.sort_top, name='sort_top'),
+    path('sort_pricedown', app.views.sort_pricedown, name='sort_pricedown'),
+    path('sort_priceup', app.views.sort_priceup, name='sort_priceup')
     
 ]
 
