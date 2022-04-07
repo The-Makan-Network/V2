@@ -10,7 +10,7 @@
     <a href={% url 'admin user' %}>Users</a>
     <a href={% url 'admin_transaction' %}>Transactions</a>
     <br/><br/>
-    <table border=1>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
             <th>Product Id</th>
             <th>Seller Id</th>
@@ -26,7 +26,7 @@
             <td> {{ products.0 }} </td>
             <td> {{ products.1 }} </td>
             <td> {{ products.2 }} </td>
-            <td> {{ products.3 }} </td>
+            <td style="word-wrap: break-word"> {{ products.3 }} </td>
             <td> {{ products.4 }} </td>
             <td> {{ products.5 }} </td>
             <td> {{ products.6 }} </td>

@@ -10,14 +10,25 @@
     <a href="admin_product">Products</a>
     <a href="admin_transaction">Transactions</a>
     <br/><br/>
-    <table border=1>
-        <thead>
+    <table style="border: 1px solid #ddd;
+    border-collapse: separate;
+    border-left: 0;
+    border-radius: 4px;
+    border-spacing: 0px;
+    margin-left:auto;
+    margin-right:auto;">
+        <thead style="display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        border-collapse: separate;">
             <th>User Id</th>
             <th>Password</th>
             <th>Phone number</th>
         </thead>
         {% for user in user %}
-        <tr>
+        <tr style="display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;">
             <td> {{ user.0 }} </td>
             <td> {{ user.2 }} </td>
             <td> {{ user.1 }} </td>
