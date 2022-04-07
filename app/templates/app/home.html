@@ -101,9 +101,6 @@ label {
     <body>
         {% include 'app/header.html' %}
         <br>
-        {% load static %}
-        <img src="{% static 'app/images/images.png' %}" width="10%"   alt="hamburger logo"/>
-        <br/>
         <div class="container">
           {% if messages %}
             {% for message in messages %}
