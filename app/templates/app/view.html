@@ -7,8 +7,11 @@
 </head>
 <body>
     {% include 'app/header.html' %}
-    <h2>Details for {{cust.0}} {{cust.2}}</h2>
-    <a href="/">Back to home</a>
+    <br>
+    <div class="container mt-4 mb-2">
+        <h2>Yummy details for {{cust.0}} {{cust.2}}</h2>
+    </div>
+    
     <br/><br/>
     <table style='text-align:left'>
         <tr>
@@ -88,4 +91,16 @@
           {% block content %}
           {% endblock %}
         </div>
+
+<style>  
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+    
+th, td {
+  background-color: #96D4D4;
+}
+</style>
+    
 </html>
