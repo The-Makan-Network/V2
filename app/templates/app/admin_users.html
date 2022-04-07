@@ -2,54 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>body {font-family: "Lato", sans-serif;}
-    .sidenav {
-        width: 130px;
-        position: fixed;
-        z-index: 1;
-        top: 20px;
-        left: 10px;
-        background: #eee;
-        overflow-x: hidden;
-        padding: 8px 0;
-}
+    <style>
+        .button {
+            background-color: sandybrown;
+            border: none;
+            color: whitesmoke;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 3px 1px;
+            cursor: pointer;
+        }
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid black; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            width: 100%; /* Set a width if needed */
+            display: block; /* Make the buttons appear below each other */
+        }
 
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #2196F3;
-        display: block;
-    }
+        .btn-group button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
 
-    .sidenav a:hover {
-        color: #064579;
-    }
-
-    .main {
-        margin-left: 140px; /* Same width as the sidebar + left position in px */
-        font-size: 28px; /* Increased text to enable scrolling */
-        padding: 0px 10px;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-    }
+/* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: sandybrown;
+        }
     </style>
     <title>Admin Users</title>
 </head>
 <body>
     {% include 'app/header.html' %}
     <br/>
-    <div class="sidenav">
-        <a href="admin_product">Products</a>
-        <a href="admin_transaction">Transactions</a>
+    <h1>Vertical Button Group</h1>
+    <div class="btn-group">
+        <a href="admin_product"><button>Products</button></a>
+        <a href="admin_transaction"><button>Transactions</button></a>
     </div>
     <br/><br/>
     <div class="main">
-        <table style="margin-left:auto;margin-right:auto;">
+        <table style="margin-left:auto;margin-right:auto;border: 1px saddlebrown;width: 100%">
             <thead>
                 <th>User Id</th>
                 <th>Password</th>
