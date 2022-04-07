@@ -44,7 +44,7 @@ h1 {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 2em;
-  color: DarkCyan;   
+  color: white;   
 }
   
   
@@ -97,6 +97,7 @@ label {
 }
   
 .input-wrapper {
+  font-size: 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,9 +126,11 @@ label {
           {% block content %}
           {% endblock %}
         </div>
-        <h1>WELCOME TO THE MAKAN NETWORK!<br>
-        Here we have some delightful YUMMIES for you to choose from!</h1>
-        <br/><br/>
+        <div class="input-wrapper">
+          <h1>WELCOME TO THE MAKAN NETWORK!<br>
+          Here we have some delightful YUMMIES for you to choose from!</h1>
+          <br/><br/>
+        </div>
         
         <div class="listing-section">
             {% for product in products %}
