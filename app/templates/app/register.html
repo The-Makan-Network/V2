@@ -7,7 +7,7 @@
 <body>
 {% include 'app/header.html' %}
   <div class="container mt-4 mb-2">
-    <h2 class="mb-4">Registration Form</h2>
+    <h2 class="mb-4">Kickstart Your Makan Journey!</h2>
 
     <form method="post">
       {% csrf_token %}
@@ -83,12 +83,13 @@
       <div>
         <button class = "btn btn-success" type="submit">Register</button>
       </div>
-  
+      
+  <br>
 
       <div class="container" style="background-color:#f1f1f1">
         <p>
-          Already have an account?"
-          <span class="text"><a href={% url 'login' %}>Start Makan-ing!</a></span>
+          Already have an account?
+          <span class="text"><a href={% url 'login' %}>Start Makan-ing here!</a></span>
         </p>
       </div>
     </form>
