@@ -6,27 +6,38 @@
 </head>
 <body>
 {% include 'app/header.html' %}
-<h2>Registration Form</h2>
+  <div class="container mt-4 mb-2">
+    <h2 class="mb-4">Registration Form</h2>
 
-<form method="post">
-  {% csrf_token %}
-  <div class="container">
-    <label for="username"><b>UserID</b></label>
-    <input type="text" placeholder="Enter UserID" name="username" aria-describedby="usernameHelpInline" maxlength="16" required>
-    <span id="usernameHelpInline" class="form-text">
-      Maximum 16 characters long.
-    </span>
-  </div>
+    <form method="post">
+      {% csrf_token %}
+      <div id="div_username" class="form-group">
+        <label for="username" class="requiredField">
+          <b>UserID</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="text" placeholder="Enter UserID" name="username" maxlength="200" class="textinput textInput form-control" aria-describedby="usernameHelpInline" required>
+          <span id="usernameHelpInline" class="form-text">
+            Maximum 16 characters long.
+          </span>
+        </div>
+      </div>
   
   <br></br>
 
-  <div class="container">
-    <label for="phoneno"><b>Phone Number</b></label>
-    <input type="tel" placeholder="Enter Phone Number" name="phoneno" aria-describedby="phonenoHelpInline" maxlength="8" required>
-    <span id="phonenoHelpInline" class="form-text">
-      Must be 8 numbers long.
-    </span>
-  </div>
+      <div id="div_phoneno" class="form-group">
+        <label for="phoneno" class="requiredField">
+          <b>Phone Number</b>
+          <span class="asteriskField">*</span>
+        </label>
+        <div>
+          <input type="tel" placeholder="Enter Phone Number" name="phoneno" maxlength="200" class="textinput textInput form-control" aria-describedby="phonenoHelpInline" required>
+          <span id="phonenoHelpInline" class="form-text">
+            Must be 8 numbers long.
+          </span>
+        </div>
+    </div>
   
   <br></br>
 
