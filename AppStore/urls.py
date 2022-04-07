@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/admin_user_edit/<int:id>', app.views.admin_users_edit, name='admin_user_edit'),
     path('admin/admin_product/', app.views.admin_products, name='admin_product'),
     path('admin/admin_product/admin_product_edit/<int:id>/', app.views.admin_product_edit, name='admin_product_edit'),
-    path('admin/admin_transactions/', app.views.admin_transactions, name='admin_transactions'),
-    path('admin/admin_transactions/admin_transactions_edit/<int:id>/', app.views.admin_transactions_edit, name='admin_transactions_edit'),
+    path('admin/admin_transaction/', app.views.admin_transactions, name='admin_transaction'),
+    path('admin/admin_transaction/admin_transactions_edit/<int:id>/', app.views.admin_transactions_edit, name='admin_transactions_edit'),
     path('', app.views.home, name='home'),
     path('register/', app.views.register, name='register'),
     path('profile/<str:id>', app.views.profile, name='profile'),
@@ -36,7 +36,8 @@ urlpatterns = [
     path('view/home', app.views.purchase_more, name='purchasemore'),
     path('sell_something/', app.views.sell, name="sell"),
     path('search_products/', app.views.search_products, name='search_products'),
-    path('search_users/', app.views.search_users, name='search_users')
+    path('search_users/', app.views.search_users, name='search_users'),
+    path('purchase', app.views.purchase, name='purchase')
     
 ]
 
