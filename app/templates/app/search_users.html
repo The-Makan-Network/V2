@@ -6,9 +6,10 @@
 </head>
 <body>
         {% include 'app/header.html' %}
-                    <div>
-                <h2> Search Results </h2>
-            </div>
+        <br>
+        <div class="mt-4 mb-4 col-md-12 text-center">
+          <h1> Were You Looking For...</h1>
+        </div>
         <div class="listing-section">
             {% if searched %}
             {% for searched in searched %}
@@ -16,7 +17,7 @@
                 <div class="text-box">
                     <h2 class="name"> {{ searched.0 }} </h2>
                     <div class="viewbutton">
-                      <a href={% url 'profile' searched.0 %} button class="btn btn-outline-dark" type="button">View More</a>
+                      <a href={% url 'profile' searched.0 %} button class="btn btn-outline-primary" type="button">View More</a>
                     </div>
                     <form method="POST" style="display: inline;">
                     {% csrf_token %}
@@ -29,8 +30,105 @@
         </div>
 </body>
 <style>
+* {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.listing-section, .cart-section {
+  width: 100%;
+  float: left;
+  padding: 1%;
+  border-bottom: 0.01em solid #dddbdb;
+}
+
+.product {
+  float: left;
+  width: 23%;
+  border-radius: 2%;
+  margin: 1%;
+}
+
+.product:hover {
+  box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);  
+  -moz-box-shadow:    1.5px 1.5px 2.5px 3px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.text-box {
+  width: 100%;
+  float: left;
+  border: 0.15em solid #dddbdb;
+  border-radius: 0 0 2% 2%;
+  padding: 1em;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  color: LightSalmon;   
+}
+  
+  
+
+h2, h3 {
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin: 0.2em auto;
+}
+
+.name, .seller, .id {
+  clear: left;
+  width: 100%;
+  text-align: center;
+}
+
+.seller {
+  color: Grey;
+}
+
+.name {
+  color: Crimson;
+}
+
+.viewbutton, .minorder, .description, .search {
+  float: left;
+  clear: left;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  text-align: center;
+  margin: 0.2em auto;
+}
+
+input:focus {
+  outline-color: #fdf;
+}
+
+label {
+  width: 60%;
+}
+
+.text-box input {
+  width: 15%;
+  clear: none;
+}
+
+.text-box button {
+  margin-top: 1em;
+}
 body {
   background-color: Seashell;
 }
-</style>        
+</style>       
 </html>
