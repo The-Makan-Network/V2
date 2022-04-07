@@ -22,8 +22,9 @@
         </div>
     <h2> Hello {{ user.0 }}, </h2>
     <br>
-    <h3> A quick look at how much you contributed to The Makan Network! </h3>
+    <h2> A quick look at how much you contributed to The Makan Network! </h2>
     <br>
+    <h3>The Yummies You Made:</h3>
     
 <table class="table">
   <thead>
@@ -52,10 +53,10 @@
   </tbody>
 </table>
   <div class="search">
-          <a href={% url 'sell' %} button class="btn btn-danger" type="button">Planning to sell something?</a>
+          <a href={% url 'sell' %} button class="btn btn-success" type="button">Planning to sell something?</a>
   </div>
   <br></br>
-  <h2> Transactions Made </h2>
+  <h3> The Yummies You Bought: </h3>
 <table class="table">
   <thead>
     <tr>
@@ -90,7 +91,8 @@
 <style>                                                                                                 
 table, thead, td {
   border: 1px solid white;
-  border-collapse: collapse;
+  #border-collapse: collapse;
+  border-style: groove;
 }
     
 thead, td {
