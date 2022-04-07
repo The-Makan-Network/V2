@@ -28,6 +28,13 @@
         .btn-group button:not(:last-child) {
             border-bottom: none; /* Prevent double borders */
         }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        th, td {
+            background-color: #1f8a8a;
+}
 
 /* Add a background color on hover */
         .btn-group button:hover {
@@ -46,11 +53,11 @@
     </div>
     <br/><br/>
     <div class="main">
-        <table style="margin-left:auto;margin-right:auto;border: 1px saddlebrown;width: 100%">
+        <table style="margin-left:auto;margin-right:auto;width: 100%">
             <thead>
-                <th>User Id</th>
-                <th>Password</th>
-                <th>Phone number</th>
+                <th style="text-align: center; font-family:'Roboto Thin'">User Id</th>
+                <th style="text-align: center; font-family:'Roboto Thin'">Password</th>
+                <th style="text-align: center; font-family:'Roboto Thin'" >Phone number</th>
             </thead>
             {% for user in user %}
             <tr>
