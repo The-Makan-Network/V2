@@ -146,7 +146,7 @@ def search_users(request):
     qns = request.POST['searched']
     qns = "%" + qns + "%"
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM allusers WHERE lower(name) LIKE lower(%s)", [qns])
+        cursor.execute("SELECT * FROM allusers WHERE lower(userid) LIKE lower(%s)", [qns])
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
