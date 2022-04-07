@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <style>
+        .button {
+            background-color: #0e5b8a;
+            border: none;
+            color: whitesmoke;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 3px 1px;
+            cursor: pointer;
+        }
         .btn-group button {
             background-color: #0e5b8a; /* Green background */
             border: 1px solid black; /* Green border */
@@ -17,6 +29,20 @@
         /* Add a background color on hover */
         .btn-group button:hover {
             background-color: sandybrown;
+        }
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #0e5b8a;
+            border-radius: 4px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+        }
+        input[type=text]:focus {
+            border: 3px solid #555;
         }
     </style>
     <meta charset="UTF-8">
@@ -46,7 +72,7 @@
         Allergen<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="allergen" value="{{obj.6}}" maxlength="64" class="textinput textInput" required="" id="id_allergen"> </div> </div> <div id="div_id_minorder" class="control-group"> <label for="id_minorder" class="control-label requiredField">
         Minimum Orders<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="minorder" value="{{obj.7}}" maxlength="64" class="textinput textInput" required="" id="id_minorder"> </div> </div>
         <br>
-        <button type="submit" value="Update">Update</button>
+        <button type="submit" value="Update" class="button">Update</button>
     </form>
 </body>
 </html>
