@@ -39,6 +39,16 @@
   padding: 1em;
 }
 
+h1 {
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 2em;
+  color: GoldenRod;   
+}
+  
+  
+
 h2, h3 {
   float: left;
   font-family: 'Roboto', sans-serif;
@@ -86,29 +96,10 @@ label {
   margin-top: 1em;
 }
   
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #e26d5c;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: white;
-  box-shadow: 0.25rem 0.25rem 0rem #f0b2a8;
-}
 
 </style>
     <body>
         {% include 'app/header.html' %}
-        <div class="search">
-          <a href="searchproduct" button class="btn btn-outline-dark" type="button">Search Products</a>
-        </div>
-        <div class="search">
-          <a href="searchuser" button class="btn btn-outline-dark" type="button">Search Users</a>
-        </div>
-        <div class="search">
-          <a href="sell_something" button class="btn btn-outline-dark" type="button">Planning to sell something?</a>
-        </div>
         
         <div class="container">
           {% if messages %}
@@ -124,10 +115,11 @@ label {
           {% block content %}
           {% endblock %}
         </div>
-        <h2>Product Listing</h2><br>
-        <a href="register">Register</a>
-        <a href="login">Login</a>
-        <br/><br/>
+        <div class="input-wrapper">
+          <h1>WELCOME TO THE MAKAN NETWORK!<br>
+          Here we have some delightful YUMMIES for you to choose from!</h1>
+          <br/><br/>
+        </div>
         
         <div class="listing-section">
             {% for product in products %}
@@ -137,7 +129,7 @@ label {
                     <h3 class="price"> {{ product.4 }} </h3>
                     <p class="minorder">Minimum Orders Needed: {{ product.7 }} </p>
                     <div class="viewbutton">
-                      <a href="view/{{product.0}}" button class="btn btn-outline-dark" type="button">View More</a>
+                      <a href="view/{{product.0}}" button class="btn btn-primary" type="button">View More</a>
                     </div>
                     <form method="POST" style="display: inline;">
                     {% csrf_token %}

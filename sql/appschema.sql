@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS allusers (
 userid varchar(16) not null unique,
-phoneno bigint primary key,
-password varchar(12) not null
+phoneno bigint not null,
+password varchar(12) primary key
 );
 
 
