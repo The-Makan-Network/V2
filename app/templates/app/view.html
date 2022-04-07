@@ -75,6 +75,10 @@
   <input type="hidden" id="s_id" name="s_id" value="{{ cust.1 }}">
   <input type="hidden" id="p_id" name="p_id" value="{{ cust.0 }}">
   <input type="submit" value="Submit">
+    
+  <br>
+    
+  <button class="btn btn-primary" href={% url 'home' %} name="action" type="submit" value="search">Continue Shopping!</button>
   
 </form>
     
@@ -92,6 +96,8 @@
           {% block content %}
           {% endblock %}
         </div>
+
+
 
 <style>                                                                                                 
 table, th, td {
