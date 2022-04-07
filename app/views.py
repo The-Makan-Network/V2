@@ -149,7 +149,7 @@ def search_products(request):
         searched = cursor.fetchall()
     result_dict = {'searched': searched}
 
-    return render(request, 'app/search_products.html', result_dict)
+    return render(request, 'app/search_products.html', {'searched': searched, 'qns':qns})
 
 
 def search_users(request):
