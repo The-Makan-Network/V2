@@ -1,7 +1,7 @@
 {%load static %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" justify-content-between>
   <div class="container-fluid">
-    <img src="/static/app/images/hamburger.png" width="5%" height="5%">
+    <img src="/static/app/images/hamburger.png" width="7%" height="7%">
     <a class="navbar-brand" href="/">The Makan Network</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -40,14 +40,14 @@
       <form class="d-flex" method=POST action="{% url 'search_products' %}">
         {% csrf_token %}
 
-        <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" name="searched">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search" name="searched">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
       </form>
       <form class="d-flex" method=POST action="{% url 'search_users' %}">
         {% csrf_token %}
 
-        <input class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search" name="searched">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Users" aria-label="Search" name="searched">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
       </form>
     </div>
   </div>
