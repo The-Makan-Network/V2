@@ -8,6 +8,7 @@
 {% include 'app/header.html' %}
   <div class="container mt-4 mb-2">
     <h2>Tell me more about the YUMMIES you boutta sell!</h2>
+    <br>
 
     <form method="post">
       {% csrf_token %}
@@ -67,7 +68,7 @@
   <br>
       <div id="div_price" class="form-group">
         <label for="price" class="requiredField">
-          <b>Price$</b>
+          <b>Price ($)</b>
           <span class="asteriskField">*</span>
         </label>
         <div>
