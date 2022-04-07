@@ -15,15 +15,34 @@
             margin: 3px 1px;
             cursor: pointer;
         }
+        .btn-group button {
+            background-color: #04AA6D; /* Green background */
+            border: 1px solid black; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            width: 100%; /* Set a width if needed */
+            display: block; /* Make the buttons appear below each other */
+        }
+
+        .btn-group button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+
+/* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: sandybrown;
+        }
     </style>
     <title>Admin Users</title>
 </head>
 <body>
     {% include 'app/header.html' %}
     <br/>
-    <div class="sidenav">
-        <a href="admin_product">Products</a>
-        <a href="admin_transaction">Transactions</a>
+    <h1>Vertical Button Group</h1>
+    <div class="btn-group">
+        <a href="admin_product"><button>Products</button></a>
+        <a href="admin_transaction"><button>Transactions</button></a>
     </div>
     <br/><br/>
     <div class="main">
