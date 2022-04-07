@@ -92,6 +92,16 @@ def signout(request):
     messages.success(request, ("You Were Logged Out!"))
     return redirect('home')
 
+def top_sales(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.productid, p.sellerid, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid = t.p_id GROUP BY p.productid ORDER BY sales desc")
+        user = cursor.fetchall()
+                       
+    result_dict= {'user': user}
+    
+    return render(request, 'app/topsales.html', {'user': user})
+
+
 
 def profile(request, id):
     """Shows the main page"""
@@ -169,14 +179,6 @@ def purchase(request):
         return render(request, 'app/view.html', {'cust':customer, 'order':order})
 
 def user_purchase(request, id):
-    # context = {}
-    # status = ''
-    # phoneno = request.phoneno
-    # if request.POST['action'] == "purchase":
-    # with connection.cursor() as cursor:
-    # cursor.execute("INSERT INTO transactions(productid, sellerid, name, description, price, category, allergen, minorder) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-    # , [request.POST["productid"], request.POST["sellerid"], request.POST["name"], request.POST["description"],
-    #  request.POST["price"], request.POST["category"], request.POST["allergens"], request.POST["minorder"] ])
     with connection.cursor() as cursor:
         cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [id])
         transactions = cursor.fetchall()
