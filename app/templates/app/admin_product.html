@@ -33,12 +33,12 @@
             <td> {{ products.7 }} </td>
             <td>
                 <a href="admin_product_edit/{{products.0}}"><button>Edit</button></a>
-                |
+                <!--|
                 <form method="POST" style="display: inline;">
                 {% csrf_token %}
                 <input type="hidden" name="id" value="{{products.0}}"/>
                 <button onclick="return confirm('Are you sure you want to delete {{products.0}}?');" type="submit" name="action" value="delete">Delete</button>
-              </form></td>
+              </form></td>-->
         </tr>
         {% endfor %}
     </table>
