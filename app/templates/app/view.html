@@ -58,10 +58,11 @@
     <br></br>
     
     
- <h4> Purchase {{ cust.2 }} </h4>  
+ <h4> Don't wait anymore! Purchase {{ cust.2 }} </h4>
+    <p>Don't sleep on this delicacy!</p>
 <form action = "{% url 'purchase' %}">
 {% csrf_token %}
-  <p><b><i>Delivery Method</i></b></p>
+  <p><b><i>Choose your Delivery Method</i></b></p>
   <input type="radio" id="housedelivery" name="delivery" value="delivery">
   <label for="housedelivery">delivery</label><br>
   <input type="radio" id="pickup" name="delivery" value="self pickup">
