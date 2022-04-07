@@ -37,7 +37,7 @@
             border-collapse: collapse;
         }
         th, td {
-            background-color: #c5c291;
+            background-color: #ffe6a6;
         }
     </style>
     <title>Admin Products</title>
@@ -46,8 +46,8 @@
     {% include 'app/header.html' %}
     <br/>
     <div class="btn-group">
-        <a href="admin/"><button>Users</button></a>
-        <a href="admin/admin_transaction"><button>Transactions</button></a>
+        <a href= "{% url 'admin user' %}"><button>Users</button></a>
+        <a href= "{% url 'admin_transaction' %}"><button>Transactions</button></a>
     </div>
     <br/><br/>
     <table style="margin-left:auto;margin-right:auto;width: 100%">
