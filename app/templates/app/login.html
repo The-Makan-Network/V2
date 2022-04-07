@@ -8,6 +8,8 @@
 <body>
   {% include 'app/header.html' %}
   <h3> Login </h3>
+  {% load static %}
+  <img src="{% static 'app/images/images.png' %}" width="10%"   alt="hamburger logo"/><br/>
 <form method="post">
   {% csrf_token %}
 
