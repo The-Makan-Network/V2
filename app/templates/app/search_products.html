@@ -8,18 +8,18 @@
         {% include 'app/header.html' %}
         <br>
         <div class="mt-4 mb-4 col-md-12 text-center">
-          <h3>Specific Yummies You Looked For</h3>
+          <h1>Specific Yummies You Looked For</h1>
         </div>
         <div class="listing-section">
             {% if searched %}
             {% for searched in searched %}
             <div class="product">
                 <div class="text-box">
-                    <h2 class="name"> {{ searched.0 }} </h2>
-                    <h3 class="price"> {{ searched.1 }} </h3>
-                    <h3 class="price"> {{ searched.2 }} </h3>
+                    <h2 class="name"> Product #{{ searched.0 }} </h2>
+                    <h3 class="price"> Seller: {{ searched.1 }} </h3>
+                    <h3 class="price"> Name of Yummy:{{ searched.2 }} </h3>
                     <div class="viewbutton">
-                      <a href={% url 'view' searched.0 %} button class="btn btn-outline-dark" type="button">View More</a>
+                      <a href={% url 'view' searched.0 %} button class="btn btn-outline-primary" type="button">View More</a>
                     </div>
                     <form method="POST" style="display: inline;">
                     {% csrf_token %}
