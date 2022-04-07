@@ -7,9 +7,6 @@
 <body>
     {% include 'app/header.html' %}
     <br/>
-    {% load static %}
-    <img src="{% static 'app/images/images.png' %}" width="10%"   alt="hamburger logo"/>
-    <br/>
     <a href={% url 'admin user' %}>Users</a>
     <a href={% url 'admin_transaction' %}>Transactions</a>
     <br/><br/>
