@@ -62,7 +62,7 @@
     <p>Don't sleep on this delicacy!</p>
 <form action = "{% url 'purchase' %}">
 {% csrf_token %}
-  <p><b><i>Choose your Delivery Method</i></b></p>
+  <p><b><i>Choose Your Delivery Method</i></b></p>
   <input type="radio" id="housedelivery" name="delivery" value="delivery">
   <label for="housedelivery">delivery</label><br>
   <input type="radio" id="pickup" name="delivery" value="self pickup">
@@ -76,7 +76,7 @@
   <input type="hidden" id="p_id" name="p_id" value="{{ cust.0 }}">
   <input type="submit" value="Submit">
     
-  <br>
+    <br></br>
     
   <button class="btn btn-primary" href={% url 'home' %} name="action" type="submit" value="search">Continue Shopping!</button>
   
