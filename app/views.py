@@ -152,6 +152,21 @@ def search_users(request):
 
     return render(request, 'app/search_users.html', result_dict)
 
+def purchase(request):
+    deliver = request.GET['delivery']
+    b_id = request.user.username
+    s_id = request.GET['s_id']
+    p_id = request.GET['p_id']
+    qty = request.GET['qty']
+    with connection.cursor() as cursor:
+        cursor.execute("INSERT INTO transactions(b_id, s_id, p_id, qty, delivery, status) VALUES (%s, %s, %s, %s, %s, %s)"
+                , [b_id, s_id, p_id, qty, deliver, "pending"])
+        cursor.execute("SELECT * FROM products WHERE productid = %s", [p_id])
+        customer = cursor.fetchone()
+        cursor.execute("SELECT SUM(qty) FROM transactions WHERE p_id = %s", [p_id])
+        order = cursor.fetchone()
+        messages.success(request, f'You bought {qty}x of this item.')
+        return render(request, 'app/view.html', {'cust':customer, 'order':order})
 
 def user_purchase(request, id):
     # context = {}
