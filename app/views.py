@@ -92,15 +92,6 @@ def signout(request):
     messages.success(request, ("You Were Logged Out!"))
     return redirect('home')
 
-def top_sales(request):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT p.productid, p.sellerid, p.minorder FROM products p LEFT OUTER JOIN transactions t ON p.productid = t.p_id GROUP BY p.productid ORDER BY sales desc")
-        user = cursor.fetchall()
-                       
-    result_dict= {'user': user}
-    
-    return render(request, 'app/topsales.html', {'user': user})
-
 
 
 def profile(request, id):
