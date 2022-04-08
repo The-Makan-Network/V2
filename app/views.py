@@ -41,6 +41,7 @@ def register(request):
                 newuser = form.save()
                 login(request, newuser)
                 messages.success(request, ("Registration successful. Welcome, {user.username}!"))
+                messages.success(request, ("Registration successful. Welcome to The Makan Network!"))
                 return redirect('login')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
