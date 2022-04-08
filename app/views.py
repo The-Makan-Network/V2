@@ -40,7 +40,6 @@ def register(request):
                                , [request.POST['username'], request.POST['phoneno'], request.POST['password1']])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, ("Registration successful. Welcome, {user.username}!"))
                 messages.success(request, ("Registration successful. Welcome to The Makan Network!"))
                 return redirect('login')
             else:
