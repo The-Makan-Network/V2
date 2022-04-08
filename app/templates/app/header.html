@@ -41,6 +41,7 @@
 
         <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search" name="searched">
         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        &nbsp;
       </form>
       <form class="d-flex" method=POST action="{% url 'search_users' %}">
         {% csrf_token %}
