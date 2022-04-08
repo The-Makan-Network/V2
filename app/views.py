@@ -40,7 +40,7 @@ def register(request):
                                , [request.POST['username'], request.POST['phoneno'], request.POST['password1']])
                 newuser = form.save()
                 login(request, newuser)
-                messages.success(request, ("Registration successful. Welcome, {username}!"))
+                messages.success(request, ("Registration successful. Welcome, {newuser.username}!"))
                 return redirect('login')
             else:
                 messages.success(request, ("Username or Phone Number already taken. Please Try Again."))
